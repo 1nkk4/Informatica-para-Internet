@@ -25,7 +25,7 @@ Este repositório foi criado para organizar e armazenar os trabalhos e atividade
 
 ## 🔗 Contribuições
 
-Este repositório é pessoal e não aceita contribuições externas no momento.
+Este repositório não aceita contribuições externas no momento.
 
 ---
 
