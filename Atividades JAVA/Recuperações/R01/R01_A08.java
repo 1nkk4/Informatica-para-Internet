@@ -1,4 +1,4 @@
-public class R1_A8 {
+public class R1_A08 {
     public static void main(String[] args) {
     
     double lad,per,are,dia;
