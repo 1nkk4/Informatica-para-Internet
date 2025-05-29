@@ -1,4 +1,4 @@
-public class R1_A1 {
+public class R1_A01 {
 public static void main(String[] args) {
         double area;
         int raio;
