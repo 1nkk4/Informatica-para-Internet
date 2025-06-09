@@ -1,4 +1,4 @@
-public class R1_A7 {
+public class R1_A07 {
     public static void main(String[] args) {
 
     double M,C,j,t;
