@@ -1,13 +1,15 @@
-public class R1_A01 {
+public class R01_A01 {
 public static void main(String[] args) {
-        double area;
-        int raio;
+        double N1, N2;
 
-        System.out.println("Digite o valor do raio: ");
-        raio = Integer.parseInt(System.console().readLine());
-        area = 3.14159 * (raio*raio);
+        System.out.print("Insira o primeiro valor: ");
+        N1 = Double.parseDouble(System.console().readLine());
 
-        System.out.printf("Valor da Area: %.2f", area);
+        System.out.print("Insira o segundo valor: ");
+        N2 = Double.parseDouble(System.console().readLine());
+
+        System.out.printf("Soma dos valores: %.2f%n", N1+N2);
+        System.out.printf("Multiplicação dos valores: %.2f%n", N1*N2);
         
     }
 }

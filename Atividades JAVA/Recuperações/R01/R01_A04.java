@@ -1,4 +1,4 @@
-public class R1_A04 {
+public class R01_A04 {
     public static void main(String[] args) {
 
     Integer ano,dia,hor,min;

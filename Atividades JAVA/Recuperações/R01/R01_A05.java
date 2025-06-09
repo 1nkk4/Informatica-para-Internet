@@ -1,4 +1,4 @@
-public class R1_A05 {
+public class R01_A05 {
     public static void main(String[] args) {
 
     double bas,alt,are,per;

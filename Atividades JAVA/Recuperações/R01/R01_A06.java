@@ -1,4 +1,4 @@
-public class R1_A06 {
+public class R01_A06 {
     public static void main(String[] args) {
     
     double pes,alt,imc;

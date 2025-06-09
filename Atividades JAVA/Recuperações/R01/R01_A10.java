@@ -1,4 +1,4 @@
-public class R1_A10 {
+public class R01_A10 {
     public static void main(String[] args) {
 
         double vint,vinf,vmei,tot;
