@@ -1,0 +1,14 @@
+Algoritmo "Diferença do maior para menor"
+var
+    N1, N2, RES: real
+início
+    leia N1, N2
+    
+    se N1 > N2 então
+        RES <- N1 - N2
+        escreva RES
+    senão
+        RES <- N2 - N1
+        escreva RES
+    fim se
+fim
