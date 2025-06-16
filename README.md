@@ -32,7 +32,7 @@ Este repositório não aceita contribuições externas no momento.
 ## 📞 Contato
 
 Caso tenha dúvidas ou sugestões, entre em contato:
-- **Email Privado:** [Futuramente!]
+- **Email Privado:** Futuramente!
 
 ---
 
