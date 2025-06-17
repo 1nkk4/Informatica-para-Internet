@@ -12,8 +12,11 @@ public class L01_A01 {
 		
 		System.out.print("Digite o segundo valor: ");
 		v2 = entrada.nextInt();
-		
-		System.out.print(v1+v2);
-		
+
+		if (v1 > v2)	{
+		System.out.print(v1-v2);
+		}
+		else {
+		System.out.print(v2-v1);
 	}
 }	
