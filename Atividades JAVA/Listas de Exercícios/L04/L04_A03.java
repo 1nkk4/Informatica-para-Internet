@@ -14,7 +14,8 @@ public class L02_A03 {
         C = entrada.nextDouble();
 
         Delta = B*B - 4*A*C;
-        
+
+        if (A > 0 || B > 0 || C > 0) {
         if (Delta < 0)  {
             System.out.print("A equação não possui raízes!");
         }
@@ -24,7 +25,10 @@ public class L02_A03 {
         else {
             System.out.print("A equação possui apenas uma raíz!");
         }
-
+        }
+        else {
+            System.out.print("as variáveis A, B e C possuem variaveis zero");
+        }
 
     }
 }
