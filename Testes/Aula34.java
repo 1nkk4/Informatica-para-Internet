@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 // Versão em java da Atividade da aula 34 //
 
-public class MyClass {
+public class Aula34 {
   public static void main(String args[]) {
     Scanner entrada = new Scanner(System.in);
     double N1,N2;
