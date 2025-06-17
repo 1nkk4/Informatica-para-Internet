@@ -7,7 +7,7 @@ public class L04_A04 {
         Scanner entrada = new Scanner(System.in);
 
         A = entrada.nextDouble();
-        B = entrada.nextDouble().
+        B = entrada.nextDouble();
         C = entrada.nextDouble();
 
         if (A == B && B == C) {
