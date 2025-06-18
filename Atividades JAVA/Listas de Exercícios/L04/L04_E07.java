@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class L04_E07 {
     public static void main (String[] args) {
     Scanner entrada = new Scanner(System.in);
-    int A,B,C,D,E;
+    int A,B,C,D,E,Maior,Menor;
         
     System.out.println("Insira cinco números inteiros:");
 
@@ -15,45 +15,39 @@ public class L04_E07 {
     E = entrada.nextInt();
     entrada.close();
 
-    System.out.println("O maior valor inserido é:");
+    Maior = A;
+    Menor = A;
 
-    if (A > B && A > C && A > D && A > E) {
-        System.out.println(A);
+    // Calculo Valor da variavel Maior
+    if (B > Maior) {
+        Maior = B;
     }
-    if (B > A && B > C && B > D && B > E) {
-        System.out.println(B);
+    if (C > Maior) {
+        Maior = C;
     }
-    if (C > A && C > B && C > D && C > E) {
-        System.out.println(C);
+    if (D > Maior) {
+        Maior = D;
     }
-    if (D > A && D > B && D > C && D > E) {
-        System.out.println(D);
+    if (E > Maior) {
+        Maior = E;
     }
-    if (E > A && E > B && E > C && E > D) {
-        System.out.println(E);
-    }
-
-    System.out.println("O menor valor inserido é:");
     
-    if (A < B && A < C && A < D && A < E) {
-        System.out.println(A);
+    // Calculo valor da variavel Menor
+    if (B < Menor) {
+        Menor = B;
     }
-    if (B < A && B < C && B < D && B < E) {
-        System.out.println(B);
+    if (C < Menor) {
+        Menor = C;
     }
-    if (C < A && C < B && C < D && C < E) {
-        System.out.println(C);
+    if (D < Menor) {
+        Menor = D;
     }
-    if (D < A && D < B && D < C && D < E) {
-        System.out.println(D);
-    }
-    if (E < A && E < B && E < C && E < D) {
-        System.out.println(E);
+    if (E < Menor) {
+        Menor = E;
     }
 
-
-
-
+    System.out.println("O menor valor inserido é: " + Menor);
+    System.out.println("O maior valor inserido é: " + Maior);
 
     }
 }

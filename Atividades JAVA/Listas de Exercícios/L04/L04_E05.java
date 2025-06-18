@@ -14,7 +14,7 @@ public class L04_E05 {
         D = entrada.nextInt();
         entrada.close();
 
-        System.out.println("Valores divisiveis por 2 e 3:");
+        System.out.println("Valores divisíveis por 2 e 3:");
         
         if (A % 2 == 0 && A % 3 == 0)	{
         	System.out.println(A);

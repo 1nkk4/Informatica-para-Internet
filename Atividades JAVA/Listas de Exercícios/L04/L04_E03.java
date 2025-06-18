@@ -7,29 +7,30 @@ public class L04_E03 {
 
         Scanner entrada = new Scanner(System.in);
 
-        System.out.print("Digite o valor de A: ");
+        System.out.println("Digite o valor de A: ");
         A = entrada.nextDouble();
-        System.out.print("Digite o valor de B: ");
+        System.out.println("Digite o valor de B: ");
         B = entrada.nextDouble();
-        System.out.print("Digite o valor de C: ");
+        System.out.println("Digite o valor de C: ");
         C = entrada.nextDouble();
         entrada.close();
 
         Delta = B*B - 4*A*C;
 
-        if (A > 0 || B > 0 || C > 0) {
-        if (Delta < 0)  {
-            System.out.print("A equação não possui raízes!");
+        if (A != 0 && B != 0 && C != 0) {
+            if (Delta < 0)  {
+                System.out.println("A equação não possui raízes!");
+            }
+            else if (Delta > 0) {
+                System.out.println("A equação possui duas raízes!");
+            }
+            else {
+                System.out.println("A equação possui apenas uma raíz!");
+            }
         }
-        else if (Delta > 0) {
-            System.out.print("A equação possui duas raízes!");
-        }
+        
         else {
-            System.out.print("A equação possui apenas uma raíz!");
-        }
-        }
-        else {
-            System.out.print("as variáveis A, B e C possuem variaveis zero");
+            System.out.println("as variáveis A, B e C possuem valor zero!");
         }
 
     }

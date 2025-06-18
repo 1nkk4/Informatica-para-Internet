@@ -1,3 +1,4 @@
+package Projetos_Java;
 import java.util.Scanner;
 
 public class L04_E10 {
@@ -8,12 +9,16 @@ public class L04_E10 {
     System.out.print("Insira um ano: ");
     ano = entrada.nextInt();
     entrada.close();
-
-    if ((ano > 1584 && ano % 400 == 0) || (ano % 4 == 0 && ano % 100 != 0)) {
-        System.out.print("O ano é bissexto!");
+    if (ano > 1584) {
+        if ((ano % 400 == 0) || (ano % 4 == 0 && ano % 100 != 0)) {
+            System.out.println("O ano é bissexto!");
+        }
+        else {
+            System.out.println("O ano não é bissexto!");
+        }
     }
     else {
-        System.out.print("O ano não é bissexto!");
+        System.out.println("O ano deve ser maior que 1584.");
     }
 
     }

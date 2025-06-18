@@ -6,11 +6,16 @@ public class L04_E06 {
 		Scanner entrada = new Scanner(System.in);
 		
 		int A,B,C,D;
+
+		System.out.println("Digite 4 valores inteiros: ");
+
 		A = entrada.nextInt();
 		B = entrada.nextInt();
 		C = entrada.nextInt();
 		D = entrada.nextInt();
 		
+		System.out.print("Valores divisíveis por 2 ou 3:");
+
 		if (A % 2 == 0 || A % 3 == 0) {
 			System.out.println(A);
 		}

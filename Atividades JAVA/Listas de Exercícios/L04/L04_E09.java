@@ -6,16 +6,15 @@ public class L04_E09 {
     Scanner entrada = new Scanner(System.in);
     double sal,salrea;
 
-    System.out.print("Digite o valor do seu salário: ");
+    System.out.println("Digite o valor do seu salário: ");
     sal = entrada.nextDouble();
     entrada.close();
-    salrea = sal * 0.30 + sal;
-
     if (sal < 5000) {
-        System.out.print("O valor do seu salário reajustado é: " + salrea);
+        salrea = sal * 0.30 + sal;
+        System.out.printf("O valor do seu salário reajustado é: %.2f%n", salrea);
     }
     else {
-        System.out.print("O salário deve ser inferior a R$5000!");
+        System.out.println("O salário deve ser inferior a R$5000!");
     }
 
     }
