@@ -1,7 +1,7 @@
 package Projetos_Java;
 import java.util.Scanner;
 
-public class L02_E03 {
+public class L04_E03 {
     public static void main(String[] args) {
         double A,B,C,Delta;
 

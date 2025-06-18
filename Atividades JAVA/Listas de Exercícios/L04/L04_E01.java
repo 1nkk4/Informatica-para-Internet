@@ -1,8 +1,7 @@
 package Projetos_Java;
 import java.util.Scanner;
 
-public class L01_E01 {
-
+public class L04_E01 {
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
 		int v1, v2;
@@ -19,5 +18,6 @@ public class L01_E01 {
 		}
 		else {
 		System.out.print(v2-v1);
+		}
 	}
 }	

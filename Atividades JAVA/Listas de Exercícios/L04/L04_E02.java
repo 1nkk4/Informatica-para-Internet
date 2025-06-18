@@ -1,7 +1,7 @@
 package Projetos_Java;
 import java.util.Scanner;
 
-public class L01_E02 {
+public class L04_E02 {
 
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
