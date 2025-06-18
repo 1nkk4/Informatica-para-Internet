@@ -1,6 +1,7 @@
+package Projetos_Java;
 import java.util.Scanner;
 
-public class L04_A04 {
+public class L04_E04 {
     public static void main(String[] args) {
         Double A,B,C;
 
@@ -9,6 +10,7 @@ public class L04_A04 {
         A = entrada.nextDouble();
         B = entrada.nextDouble();
         C = entrada.nextDouble();
+        entrada.close();
 
         if (A == B && B == C) {
             System.out.print("equilátero");

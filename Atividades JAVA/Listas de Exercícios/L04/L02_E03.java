@@ -1,6 +1,7 @@
+package Projetos_Java;
 import java.util.Scanner;
 
-public class L02_A03 {
+public class L02_E03 {
     public static void main(String[] args) {
         double A,B,C,Delta;
 
@@ -12,6 +13,7 @@ public class L02_A03 {
         B = entrada.nextDouble();
         System.out.print("Digite o valor de C: ");
         C = entrada.nextDouble();
+        entrada.close();
 
         Delta = B*B - 4*A*C;
 
