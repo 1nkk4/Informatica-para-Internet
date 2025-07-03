@@ -8,10 +8,13 @@ public class L05_A02 {
 		
 		Scanner entrada = new Scanner(System.in);
 		
-		int nume, cont, quad, soma, media;
+		int nume, cont, quad, soma;
+		double media;
 		
 		System.out.print("Digite quantos números você quer calcular: ");
 		nume = entrada.nextInt();
+		entrada.close();
+
 		cont = 1;
 		quad = 0;
 		soma = 0;

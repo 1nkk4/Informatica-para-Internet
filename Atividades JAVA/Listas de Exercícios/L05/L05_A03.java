@@ -19,8 +19,8 @@ public class L05_A03 {
 			System.out.printf("Quadrado de %d: %d%n",nume,quad);
 			}
 	}
-	
-	System.out.println("Um valor negativo foi inserido programa finalizado.");
+	entrada.close();
+	System.out.println("Um valor negativo foi inserido, programa finalizado.");
 	
 	}
 

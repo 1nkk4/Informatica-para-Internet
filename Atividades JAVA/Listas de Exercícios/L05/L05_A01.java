@@ -7,7 +7,7 @@ public class L05_A01{
 		
 		//Calcule a soma de dez números quaisquer fornecidos pelo usuário
 	
-		Scanner entrada = new  Scanner (System.in);
+		Scanner entrada = new Scanner (System.in);
 		
 		int soma, cont, nume;
 		
