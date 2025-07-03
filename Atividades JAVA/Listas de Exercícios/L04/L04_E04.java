@@ -16,7 +16,7 @@ public class L04_E04 {
         entrada.close();
 
         if (A + B > C && A + C > B && B + C > A) {
-            if (A == B && B == C) {
+            if (A == B && B == C && A == C) {
             System.out.println("Equilátero.");
             }
             else if (A == B || B == C || C == A) {
