@@ -8,7 +8,8 @@ public class L05_A02 {
 		
 		Scanner entrada = new Scanner(System.in);
 		
-		int nume, cont, quad, soma, media;
+		int nume, cont, quad, soma;
+		double media;
 		
 		System.out.print("Digite quantos números você quer calcular: ");
 		nume = entrada.nextInt();
@@ -25,7 +26,6 @@ public class L05_A02 {
 			cont = 1 + cont;
 		}
 		media = soma / nume;
-		System.out.printf("Resultado do quadrado: %d%n Resultado da soma: %d%n Resultado da média: %d%n",quad,soma,media);
-		
+		System.out.printf("Resultado do quadrado: %d%nResultado da soma: %d%nResultado da média: %.2f%n",quad,soma,media);
 	}
 }
