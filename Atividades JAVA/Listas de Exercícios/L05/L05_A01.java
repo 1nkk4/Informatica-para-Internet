@@ -7,17 +7,17 @@ public class L05_A01{
 		
 		//Calcule a soma de dez números quaisquer fornecidos pelo usuário
 	
-		Scanner entrada = new Scanner (System.in);
+		Scanner entrada = new Scanner(System.in);
 		
-		int soma, cont, nume;
+		int soma, cont, numero;
 		
 		cont = 1;
 		soma = 0;
 		
 		while (cont <= 10) {
 			System.out.printf("Digite o %d° número: ",cont);
-			nume = entrada.nextInt();
-			soma = soma + nume;
+			numero = entrada.nextInt();
+			soma = soma + numero;
 			cont = cont + 1;
 		}
 

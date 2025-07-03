@@ -2,7 +2,7 @@ package Projetos_Java;
 import java.util.Scanner;
 
 public class L05_A02 {
-	public static void main(String[]args) {
+	public static void main(String[] args) {
 		
 //		Calcule o somatório, a soma dos quadrados e a média entre os n primeiros números inteiros positivos.
 		
@@ -13,7 +13,6 @@ public class L05_A02 {
 		
 		System.out.print("Digite quantos números você quer calcular: ");
 		nume = entrada.nextInt();
-		entrada.close();
 
 		cont = 1;
 		quad = 0;
@@ -25,8 +24,10 @@ public class L05_A02 {
 			soma = soma + cont;
 			cont = 1 + cont;
 		}
-		media = soma / nume;
-		System.out.printf("Resultado do quadrado: %d%n Resultado da soma: %d%n Resultado da média: %d%n",quad,soma,media);
+		media = (double) soma / nume;
+		System.out.printf("Resultado do quadrado: %d%n Resultado da soma: %d%n Resultado da média: %.2f%n",quad,soma,media);
+		
+		entrada.close();
 		
 	}
 }
