@@ -2,14 +2,13 @@ package Projetos_Java;
 import java.util.Scanner;
 
 public class L05_A02 {
-	public static void main(String[]args) {
+	public static void main(String[] args) {
 		
 //		Calcule o somatório, a soma dos quadrados e a média entre os n primeiros números inteiros positivos.
 		
 		Scanner entrada = new Scanner(System.in);
 		
-		int nume, cont, quad, soma;
-		double media;
+		int nume, cont, quad, soma, media;
 		
 		System.out.print("Digite quantos números você quer calcular: ");
 		nume = entrada.nextInt();

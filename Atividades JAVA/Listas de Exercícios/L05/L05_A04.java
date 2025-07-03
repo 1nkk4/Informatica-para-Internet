@@ -17,7 +17,7 @@ public class L05_A04 {
         }
     }
     entrada.close();
-    System.out.print("Valor 0 inserido programa finalizado.");
+    System.out.print("Valor 0 inserido, programa finalizado.");
 
     
 
