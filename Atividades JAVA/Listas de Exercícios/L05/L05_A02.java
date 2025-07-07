@@ -13,7 +13,6 @@ public class L05_A02 {
 		
 		System.out.print("Digite quantos números você quer calcular: ");
 		nume = entrada.nextInt();
-		entrada.close();
 
 		cont = 1;
 		quad = 0;
@@ -25,7 +24,9 @@ public class L05_A02 {
 			soma = soma + cont;
 			cont = 1 + cont;
 		}
+		
 		media = soma / nume;
 		System.out.printf("Resultado do quadrado: %d%nResultado da soma: %d%nResultado da média: %.2f%n",quad,soma,media);
+		entrada.close();
 	}
 }
