@@ -12,5 +12,6 @@ public class L06_A02 {
         System.out.printf("%d x %d = %d%n", c, n, r);
         c = ++c;
         }
+        entrada.close();
     }
 }

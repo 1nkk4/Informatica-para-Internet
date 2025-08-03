@@ -23,5 +23,6 @@ public class L06_A01 {
         } else {
             System.out.println(p + "          Importado");
         }
+        entrada.close();
     }
 }

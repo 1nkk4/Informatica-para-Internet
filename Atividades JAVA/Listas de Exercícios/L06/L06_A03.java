@@ -21,6 +21,6 @@ public class L06_A03 {
             c = ++c;
         }
             System.out.printf("Faturamento total mensal do armazém: %.2f\n", tf);
-
+            entrada.close();
     }
 }

@@ -1,4 +1,3 @@
-
 public class L06_A05 {
     public static void main(String[] args) {
         int c,s;

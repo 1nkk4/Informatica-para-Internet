@@ -25,5 +25,6 @@ public class L06_A04 {
         else {
             System.out.print("Você digitou uma nota inválida!");
         }
+        entrada.close();
     }
 }
