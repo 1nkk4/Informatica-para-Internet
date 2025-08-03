@@ -16,5 +16,6 @@ public class L06_A08 {
             c = ++c;
         }
         System.out.printf("O resultado do valor de H é: %.2f", h);
+        entrada.close();
     }
 }
