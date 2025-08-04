@@ -5,23 +5,23 @@ public class L06_A01 {
         Scanner entrada = new Scanner(System.in);
         int c; double p;
 
-        System.out.println("Digite o preço do produto: ");
+        System.out.print("Digite o preço do produto: ");
         p = entrada.nextDouble();
-        System.out.println("Digite o código de origem: ");
+        System.out.print("Digite o código de origem: ");
         c = entrada.nextInt();
 
         System.out.println("Preço        Região de Procedência");
 
         if (c == 1) {
-            System.out.println(p + "          Norte");
+            System.out.printf("R$%.2f          Norte%n", p);
         } else if (c == 2 || c == 5 || c == 9) {
-            System.out.println(p + "          Sul");
+            System.out.printf("R$%.2f          Sul%n", p);
         } else if (c == 3 || c >= 10 && c <= 15) {
-            System.out.println(p + "          Leste");
+            System.out.printf("R$%.2f          Leste%n", p);
         } else if (c == 7 || c == 20) {
-            System.out.println(p + "          Oeste");
+            System.out.printf("R$%.2f          Oeste%n", p);
         } else {
-            System.out.println(p + "          Importado");
+            System.out.printf("R$%.2f          Importado%n", p);
         }
         entrada.close();
     }
