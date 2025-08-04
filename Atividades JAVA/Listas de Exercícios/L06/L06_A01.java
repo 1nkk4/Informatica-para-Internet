@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class L06_A01 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        int p, c;
+        int c; double p;
 
         System.out.println("Digite o preço do produto: ");
-        p = entrada.nextInt();
+        p = entrada.nextDouble();
         System.out.println("Digite o código de origem: ");
         c = entrada.nextInt();
 
