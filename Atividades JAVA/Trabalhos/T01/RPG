@@ -1,0 +1,65 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class TrabalhoRPG_Sistemacombate {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+        Random alea = new Random();
+        
+        /*Código inutil para copiar e colar boom
+        
+        System.out.println("");
+         = entrada.nextInt();    
+        
+         */
+        
+        // Variaveis do personagem
+        
+        int vida, escolha;
+        
+        // Inventario
+        
+        boolean lata;
+        
+        
+        vida = 20 ;
+        
+        //     Introdução
+        
+        System.out.println("Sua visão esta escura, e você não consegui ver nada, mas uma voz alfinetada fala com você. \n???: Ei! Ei! Acorda!... A voz entonou com preocupação.");
+        System.out.println("Sua visão começa lentamente melhorar, você vê cores quentes e sem vida, mas no meio delas, um pequeno borrão azul claro se destaca.");
+        System.out.println("*Quando você abra seus olhos, por um momento, você acha que esta halucinando, um Pinguin falante esta na sua frente, ele tem uma boina xadrez, uma lupa e uma pochete. \n Pinguin: Você parece bem machucado, você consegue se levantar?.");
+        System.out.println("*Você sente uma dor na cabeça, mas apesar disso você consegue se levantar com facilidade.")
+        nome = entrada.nextLine();
+        
+        // Escolha de rota
+        
+        System.out.println("Você está no meio do nada você sente calor");
+        
+        System.out.println("[1] Olhar ao redor");
+        
+        if (escolha == 1) {
+            System.out.println("Você olha ao redor");
+            System.out.println("Você vê grande número de lixo ao redor mas algo lhe chama atenção");
+            System.out.println("*Algo brilha em meio a tanta inutilidade");
+            System.out.println("Você encontrou uma lata de feijão lacrada!");
+            System.out.println("[1] Pegar a lata. /n[2] Deixar essa lata nojenta imunda eca eca.");
+            escolha = entrada.nextInt();
+            
+            if (escolha == 1 ) {
+                lata = true;
+                System.out.println("Você pegou a lata!");
+            else if (escolha == 2) {
+                System.out.println("Você ignorou a lata");
+            }
+            }
+        }
+        
+        
+
+        
+        
+
+    }
+}
