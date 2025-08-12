@@ -1,65 +1,61 @@
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
-public class TrabalhoRPG_Sistemacombate {
+public class RPG {
+    
+    public static void println(String texto) {
+        System.out.println(texto);
+    }
     public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
         Random alea = new Random();
         
-        /*Código inutil para copiar e colar boom
-        
-        System.out.println("");
-         = entrada.nextInt();    
-        
-         */
-        
         // Variaveis do personagem
-        
-        int vida, escolha;
-        
+        int vida = 20;
+        int escolha;
+
         // Inventario
+        boolean lata = false;
+
+        // Introdução
+        println("(Sua visão esta escura, e você não consegui ver nada, mas uma voz alfinetada fala com você.) \n???: Ei! Ei! Acorda!... (A voz entonou com preocupação.)");
+        println("Sua visão começa lentamente melhorar, você vê cores quentes e sem vida, mas no meio delas, um pequeno borrão azul claro se destaca.");
+        println("(Quando você abra seus olhos, por um momento, você acha que esta halucinando, um Pinguin falante esta na sua frente, ele tem uma boina xadrez, uma lupa e uma pochete.) \n Pinguin: Você parece bem machucado, você consegue se levantar?.");
+        println("(Você sente uma dor na cabeça, mas apesar disso você consegue se levantar com facilidade.)");
         
-        boolean lata;
+        // Primeira escolha
+        println("Você está no meio do nada. Você sente calor...");
+        println("Um caminho é aparente no meio dos montes de lixo");
         
-        
-        vida = 20 ;
-        
-        //     Introdução
-        
-        System.out.println("Sua visão esta escura, e você não consegui ver nada, mas uma voz alfinetada fala com você. \n???: Ei! Ei! Acorda!... A voz entonou com preocupação.");
-        System.out.println("Sua visão começa lentamente melhorar, você vê cores quentes e sem vida, mas no meio delas, um pequeno borrão azul claro se destaca.");
-        System.out.println("*Quando você abra seus olhos, por um momento, você acha que esta halucinando, um Pinguin falante esta na sua frente, ele tem uma boina xadrez, uma lupa e uma pochete. \n Pinguin: Você parece bem machucado, você consegue se levantar?.");
-        System.out.println("*Você sente uma dor na cabeça, mas apesar disso você consegue se levantar com facilidade.")
-        nome = entrada.nextLine();
-        
-        // Escolha de rota
-        
-        System.out.println("Você está no meio do nada você sente calor");
-        
-        System.out.println("[1] Olhar ao redor");
-        
+        println("[1] Olhar ao redor\n[2] Seguir o caminho");
+        escolha = entrada.nextInt();
+
         if (escolha == 1) {
-            System.out.println("Você olha ao redor");
-            System.out.println("Você vê grande número de lixo ao redor mas algo lhe chama atenção");
-            System.out.println("*Algo brilha em meio a tanta inutilidade");
-            System.out.println("Você encontrou uma lata de feijão lacrada!");
-            System.out.println("[1] Pegar a lata. /n[2] Deixar essa lata nojenta imunda eca eca.");
+            println("Você olha ao redor");
+            println("Você vê grande número de lixo ao redor mas algo lhe chama atenção");
+            println("(Algo brilha em meio a tanta inutilidade)");
+            println("Você encontrou uma lata de feijão lacrada!");
+            println("[1] Pegar a lata. \n[2] Deixar essa lata nojenta imunda eca eca.");
             escolha = entrada.nextInt();
+            
+            // Escolha de pegar a lata (Futura arma pra matar mendigos sshhhh)
             
             if (escolha == 1 ) {
                 lata = true;
-                System.out.println("Você pegou a lata!");
-            else if (escolha == 2) {
-                System.out.println("Você ignorou a lata");
+                println("Você pegou a lata!");
+                println("Você decidiu seguir o caminho...");
             }
+            
+            else if (escolha == 2) {
+                println("Você ignorou a lata");
+                println("Você decidiu seguir o caminho");
             }
         }
-        
-        
+            
 
-        
-        
-
-    }
+            
+            println("Você segue o caminho");
+        entrada.close();
+    }    
 }
