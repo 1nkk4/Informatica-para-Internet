@@ -1,0 +1,151 @@
+package combate;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Rpg {
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Random alea = new Random();
+        
+        // Variáveis do personagem
+        String nome;
+        int escolha;
+
+        // Inventário
+        boolean lata = false;
+
+        // Introdução
+        println("[Sua visão esta escura, e você não consegue ver nada, mas uma voz alfinetada fala com você.] \n???: Ei! Ei! Acorda!... [A voz entonou com preocupação.]");
+        println("[Sua visão começa lentamente melhorar, você vê cores quentes e sem vida, mas no meio delas, um pequeno borrão azul claro se destaca.]");
+        println("[Quando você abre seus olhos, por um momento, você acha que está alucinando, um Pinguin falante está na sua frente, seu corpo é redondo, ele tem uma boina xadrez, uma lupa e uma pochete.] \n Pinguin: Você parece bem machucado, você consegue se levantar?");
+        println("[Você sente uma dor na cabeça, mas apesar disso você consegue se levantar com facilidade.]");
+        println("Pinguin: Wow, você parecia bem cansado, que bom que você parece bem, me diga, qual o seu nome?");
+        nome = entrada.nextLine();
+        println("Pinguin: Ah " + nome + ", que nome... Peculiar. \nMeu nome é Ferdo, Ferdo Belarir Pen.");
+        println("Ferdo: Parece que nós nos encontramos num lugar muito peculiar. Sendo alguém baixinho como eu, tô precisando de toda ajuda que eu puder conseguir. \n");
+        println("[O pinguin pula em suas costas, apesar de seu corpo parecer, ele não é pesado.]");
+        println("Ferdo: Então... Aonde vamos?");
+        
+        // Primeira escolha
+        println("[Apesar do ambiente calorento, você sente seu corpo gelado perante ao ambiente gigantesco, estruturas destruídas, um chão de areia avermelhada, tudo parece gritar morte na sua cara...]");
+        println("[Apesar de não saber o que pode-se encontrar, você considera procurar os escombros do que antes foram casas.]");
+        println("[1] Olhar ao redor.\n[2] Seguir em frente.");
+        escolha = entrada.nextInt();
+
+        if (escolha == 1) {
+            println("[Você caminha até o que um dia foi provavelmente uma casa, vasculhando o ambiente com alta atenção aos detalhes.]");
+            println("[Há vários destroços no chão, você relutantemente vasculha por baixo deles.]");
+            println("[Dentro dos destroços, você vê metal embaixo de uma pilha de madeira queimada.]");
+            println("[1] Quase lá... \n[2] Talvez não vale a pena...");
+            escolha = entrada.nextInt();
+            
+            // Escolha de pegar a lata 
+            if (escolha == 1 ) {
+                if (alea.nextInt(1, 5) == 3) {
+                    System.out.println("[Você estende a sua mão pelos destroços, você sente sua mão tocando algo frio...]\n[Você achou uma lata de feijão!]");
+                    lata = true;
+                    System.out.println("Ferdo: Eu espero que você não considere comer isso...");
+                }
+                else {
+                    System.out.println("[Você estende a sua mão pelos destroços, você sente sua mão tocando algo peludo...] \n[Um rato te mordeu! Você rapidamente recuou sua mão.]");
+                    System.out.println("Ferdo: Meu deus você tá bem!? Eu espero que você não fique doente...");
+                }
+            }
+            else if (escolha == 2) {
+                println("Você ignorou o metal, talvez pelo melhor...");
+                println("Você decidiu seguir em frente.");
+            }
+        }
+        
+        // Chegada do velho
+        println("[Ao caminhar pela área, o calor parece se tornar mais tolerável com o tempo.]");
+        println("Ferdo: Então, o que você quer fazer? Na minha opinião eu gostaria de sair daqui, mas eu estou disposto a qualquer coisa que você- [Um grito invade ambos os seus ouvidos quando uma voz rouca e grossa vai em direção a vocês.]");
+        println("???: Ei cara! O que você tá fazendo com esse bicho nas suas costas?");
+        println("[Um homem velho e enrugado se aproxima de vocês.]");
+        println("???: Olha só o tamanho desse gordinho! Caminhando com um desses por ai e esperando que não vai ser roubado é pura burrice!");
+        println("[Ferdo olha para si mesmo, sentindo vergonha de seu peso.] \nFerdo: Gordinho...? ...Quer saber? Ei, " + nome + ", que tal eu te ensinar combate com esse velhote aí? Afinal você parece o tipo de pessoa que não sabe lutar.");
+        
+        // =====================
+        // SISTEMA DE COMBATE
+        // =====================
+        boolean venceu = false;
+        while (!venceu) {
+            int vida = 10;
+            int vidaInimigo = 10;
+            int contraataqueJogador = 0;
+            int contraataqueInimigo = 0;
+            
+            System.out.println("O velho se prepara para lutar!");
+
+            while (vida > 0 && vidaInimigo > 0) {
+                boolean jogadorAtaca = false;
+                boolean jogadorContraataca = false;
+                boolean inimigoAtaca = false;
+                boolean inimigoContraataca = false;
+
+                System.out.println("Sua vida: " + vida + " | Vida do velho: " + vidaInimigo);
+                System.out.println("Contra-ataques restantes: " + (4 - contraataqueJogador) + " | Inimigo: " + (4 - contraataqueInimigo));
+                System.out.println("[1] Atacar\n[2] Contra-atacar");
+
+                escolha = entrada.nextInt();
+
+                // Ação do jogador
+                if (escolha == 1) {
+                    jogadorAtaca = true;
+                    System.out.println("Você escolheu atacar!");
+                } else if (escolha == 2 && contraataqueJogador < 4) {
+                    jogadorContraataca = true;
+                    contraataqueJogador++;
+                    System.out.println("Você se prepara para contra-atacar!");
+                } else if (escolha == 2 && contraataqueJogador >= 4) {
+                    System.out.println("Você já contra-atacou 4 vezes!");
+                }
+
+                // Ação do inimigo (aleatória)
+                boolean inimigoQuerContraatacar = alea.nextBoolean();
+                if (inimigoQuerContraatacar && contraataqueInimigo < 4) {
+                    inimigoContraataca = true;
+                    contraataqueInimigo++;
+                    System.out.println("\nO velho se prepara para contra-atacar!");
+                } else {
+                    inimigoAtaca = true;
+                    System.out.println("\nO velho vai atacar!");
+                }
+
+                // Resolver combate
+                if (jogadorAtaca && inimigoAtaca) {
+                    int dano = alea.nextInt(5) + 1;
+                    int danoInimigo = alea.nextInt(4) + 1;
+                    System.out.println("Você deu " + dano + " de dano!");
+                    System.out.println("\nO velho te atacou e causou " + danoInimigo + " de dano!");
+                    vidaInimigo -= dano;
+                    vida -= danoInimigo;
+                } else if (jogadorAtaca && inimigoContraataca) {
+                    int dano = alea.nextInt(5) + 1;
+                    System.out.println("Você deu " + dano + " de dano!");
+                    System.out.println("\nO velho contra-atacou e te deu " + (dano * 2) + " de dano!");
+                    vidaInimigo -= dano;
+                    vida -= (dano * 2);
+                } else if (jogadorContraataca && inimigoAtaca) {
+                    int danoInimigo = alea.nextInt(5) + 1;
+                    System.out.println("O velho te atacou e causou " + danoInimigo + " de dano!");
+                    System.out.println("\nVocê contra-atacou e deu " + (danoInimigo * 2) + " de dano!");
+                    vida -= danoInimigo;
+                    vidaInimigo -= (danoInimigo * 2);
+                } else if (jogadorContraataca && inimigoContraataca) {
+                    System.out.println("\nAmbos contra-atacaram! Nada aconteceu!");
+                }
+            }
+
+            if (vida > 0) {
+                System.out.println("[Você derrotou o velho no treino!]");
+                venceu = true; // sai do loop de reinício
+            } else {
+                System.out.println("[Você perdeu a luta...]");
+            }
+        }
+        
+        entrada.close();
+    }    
+}       

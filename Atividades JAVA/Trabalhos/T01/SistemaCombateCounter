@@ -1,0 +1,90 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class SistemaCombateCounter {
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Random alea = new Random();
+
+        int escolha;
+
+        int vida = 10;
+        int vidaInimigo = 10;
+        int contraataqueJogador = 0;
+        int contraataqueInimigo = 0;
+
+        // Evento de batalha simples
+        System.out.println("Um rato bizarro aparece");
+
+        while (vida > 0 && vidaInimigo > 0) {
+            boolean jogadorAtaca = false;
+            boolean jogadorContraataca = false;
+            boolean inimigoAtaca = false;
+            boolean inimigoContraataca = false;
+
+            System.out.println("Sua vida: " + vida + " | Vida do rato: " + vidaInimigo);
+            System.out.println("Contra-ataques restantes: " + (4 - contraataqueJogador) + " | Inimigo: " + (4 - contraataqueInimigo));
+            System.out.println("[1] Atacar\n[2] Contra-atacar");
+
+            escolha = entrada.nextInt();
+
+            // Ação do jogador
+            if (escolha == 1) {
+                jogadorAtaca = true;
+                System.out.println("Você escolheu atacar!");
+            } else if (escolha == 2 && contraataqueJogador < 4) {
+                jogadorContraataca = true;
+                contraataqueJogador++;
+                System.out.println("Você se prepara para contra-atacar!");
+            } else if (escolha == 2 && contraataqueJogador >= 4) {
+                System.out.println("Você já contra-atacou 4 vezes!");
+            }
+
+            // Ação do inimigo (aleatória)
+            boolean inimigoQuerContraatacar = alea.nextBoolean();
+            if (inimigoQuerContraatacar && contraataqueInimigo < 4) {
+                inimigoContraataca = true;
+                contraataqueInimigo++;
+                System.out.println("O rato se prepara para contra-atacar!");
+            } else {
+                inimigoAtaca = true;
+                System.out.println("O rato vai atacar!");
+            }
+
+            // Resolver combate
+            if (jogadorAtaca && inimigoAtaca) {
+                // Ambos atacam
+                int dano = alea.nextInt(5) + 1;
+                int danoInimigo = alea.nextInt(4) + 1;
+                System.out.println("Você deu " + dano + " de dano!");
+                System.out.println("O rato te atacou e causou " + danoInimigo + " de dano!");
+                vidaInimigo -= dano;
+                vida -= danoInimigo;
+            } else if (jogadorAtaca && inimigoContraataca) {
+                // Jogador ataca, inimigo contra-ataca
+                int dano = alea.nextInt(5) + 1;
+                System.out.println("Você deu " + dano + " de dano!");
+                System.out.println("O rato contra-atacou e te deu " + (dano * 2) + " de dano!");
+                vidaInimigo -= dano;
+                vida -= (dano * 2);
+            } else if (jogadorContraataca && inimigoAtaca) {
+                // Jogador contra-ataca, inimigo ataca
+                int danoInimigo = alea.nextInt(4) + 1;
+                System.out.println("O rato te atacou e causou " + danoInimigo + " de dano!");
+                System.out.println("Você contra-atacou e deu " + (danoInimigo * 2) + " de dano!");
+                vida -= danoInimigo;
+                vidaInimigo -= (danoInimigo * 2);
+            } else if (jogadorContraataca && inimigoContraataca) {
+                // Ambos contra-atacam
+                System.out.println("Ambos contra-atacaram! Nada aconteceu!");
+            }
+        }
+
+        if (vida > 0) {
+            System.out.println("Você derrotou o rato bizarro!");
+        } else {
+            System.out.println("Você foi derrotado...");
+        }
+    }
+}

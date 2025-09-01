@@ -1,0 +1,40 @@
+import java.util.Random;
+import java.util.Scanner;
+
+    public class CombateBase {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+        Random alea = new Random();
+
+        int escolha;
+
+        int vida = 10;
+        int vidaInimigo = 10;
+
+        // Evento de batalha simples
+        System.out.println("Um rato bizarro aparece");
+
+
+        while (vida > 0 && vidaInimigo > 0) {
+            System.out.println("Sua vida: " + vida + " | Vida do rato: " + vidaInimigo);
+            System.out.println("[1] Atacar");
+            escolha = entrada.nextInt();
+            if (escolha == 1) {
+                int dano = alea.nextInt(5) + 1; // 1 a 5
+                System.out.println("Você deu " + dano + " de dano!");
+                vidaInimigo -= dano;
+            }
+            if (vidaInimigo > 0) {
+                int danoInimigo = alea.nextInt(4) + 1;
+                System.out.println("O rato te atacou e causou " + danoInimigo + " de dano!");
+                vida -= danoInimigo;
+            }
+        }
+        if (vida > 0) {
+            System.out.println("Você derrotou o rato bizarro!");
+        } else {
+            System.out.println("Você foi derrotado...");
+        }
+    }
+}

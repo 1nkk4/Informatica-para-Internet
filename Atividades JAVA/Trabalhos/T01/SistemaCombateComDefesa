@@ -1,0 +1,99 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class SistemaCombateCounter {
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Random alea = new Random();
+
+        int escolha;
+
+        int vida = 10;
+        int vidaInimigo = 10;
+
+        boolean jogadorPD = true;
+        boolean inimigoPD = true;
+
+        // Evento de batalha simples
+        System.out.println("Um rato bizarro aparece");
+
+        while (vida > 0 && vidaInimigo > 0) {
+            boolean jogadorAtaca = false;
+            boolean jogadorDefende = false;
+            boolean inimigoAtaca = false;
+            boolean inimigoDefende = false;
+
+            System.out.println("Sua vida: " + vida + " | Vida do rato: " + vidaInimigo);
+            System.out.println("Força pra defender: " + jogadorPD + " | Inimigo: " + inimigoPD);
+            System.out.println("[1] Atacar\n[2] Contra-atacar");
+
+            escolha = entrada.nextInt();
+
+            // Ação do jogador
+            if (escolha == 1) {
+                jogadorAtaca = true;
+                System.out.println("Você escolheu atacar!");
+            } else if (escolha == 2 && jogadorPD == true) {
+                jogadorDefende = true;
+                System.out.println("Você se prepara para defender!");
+            } else if (escolha == 2 && jogadorPD == false) {
+                System.out.println("Você já defendeu no turno anterior logo você ataca!");
+                jogadorAtaca = true;
+                
+            }
+
+            // Ação do inimigo (aleatória)
+            boolean inimigoQuerDefender = alea.nextBoolean();
+            if (inimigoQuerDefender && inimigoPD == true) {
+                inimigoDefende = true;
+                System.out.println("O rato se prepara para defender!");
+            } 
+            else if (inimigoQuerDefender && inimigoPD == false) {
+                System.out.println("O rato tentou defender mas estava fraco logo atacou!");
+                inimigoAtaca = true;
+            }
+            else {
+                inimigoAtaca = true;
+                System.out.println("O rato vai atacar!");
+            }
+
+            // Resolver combate
+            if (jogadorAtaca && inimigoAtaca) {
+                // Ambos atacam
+                int dano = alea.nextInt(5) + 1;
+                int danoInimigo = alea.nextInt(4) + 1;
+                System.out.println("Você deu " + dano + " de dano!");
+                System.out.println("O rato te atacou e causou " + danoInimigo + " de dano!");
+                inimigoPD = true;
+                jogadorPD = true;
+                vidaInimigo -= dano;
+                vida -= danoInimigo;
+            } else if (jogadorAtaca && inimigoDefende && inimigoPD) {
+                // Jogador ataca, inimigo defende
+                int dano = alea.nextInt(5) + 1;
+                System.out.println("Você deu " + dano + " de dano!");
+                System.out.println("Mas... O Rato defendeu e negou o dano!");
+                inimigoPD = false;
+            } else if (jogadorDefende && inimigoAtaca && jogadorPD == true) {
+                // Jogador defende, inimigo ataca
+                int danoInimigo = alea.nextInt(4) + 1;
+                System.out.println("O rato te atacou e causou " + danoInimigo + " de dano!");
+                System.out.println("Mas... Você defendeu e negou o dano!");
+                jogadorPD = false;
+            } else if (jogadorDefende && inimigoDefende && jogadorPD == true && inimigoPD == true) {
+                // Ambos defendem
+                System.out.println("Ambos defenderam! Nada aconteceu!");
+                jogadorPD = false;
+                inimigoPD = false;
+            }
+        }
+
+        if (vida > 0) {
+            System.out.println("Você derrotou o rato bizarro!");
+        } else {
+            System.out.println("Você foi derrotado...");
+        }
+    }
+}
+
