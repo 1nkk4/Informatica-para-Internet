@@ -10,6 +10,6 @@ public class L07_A07 {
         for(int num = 15; num <= 200; num++) {
             System.out.printf("%d²=%d%n",num,num*num);
         }
-        
+        sc.close();
     }
 }
