@@ -15,5 +15,6 @@ public class L07_A04 {
         }
         med=sum/num;
         System.out.printf("Somatório: %d%nSoma dos quadrados: %d%nMédia: %.1f",sum,qad,med);
+        sc.close();
     }
 }
