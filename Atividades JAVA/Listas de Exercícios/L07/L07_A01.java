@@ -33,6 +33,7 @@ public class L07_A01 {
         Ano = sc.nextInt();
 
         System.out.printf("%d de %s de %d",Dia, nMes, Ano);
+        sc.close();
 
     }
 }
