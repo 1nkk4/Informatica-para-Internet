@@ -17,5 +17,6 @@ public class L07_A05 {
         } while(nume>=0);
 
         System.out.println("Um valor negativo foi inserido, programa finalizado.");
+        sc.close();
     }
 }
