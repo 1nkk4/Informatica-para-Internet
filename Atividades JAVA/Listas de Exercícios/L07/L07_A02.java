@@ -28,6 +28,6 @@ public class L07_A02 {
             case 8: System.out.println("deve se realizar a vistoria em Novembro deste ano"); break;
             case 9: System.out.println("deve se realizar a vistoria em Dezembro deste ano"); break;
         }
-
+        sc.close();
     }
 }
