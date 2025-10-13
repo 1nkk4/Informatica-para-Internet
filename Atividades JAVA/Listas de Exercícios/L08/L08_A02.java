@@ -25,6 +25,6 @@ public class L08_A02 {
 
         System.out.println("Você acertou!");
         System.out.printf("Valor digitado: %d Valor aleatorio: %d", p, num);
-
+        sc.close();
     }
 }

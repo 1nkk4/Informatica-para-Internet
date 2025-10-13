@@ -20,9 +20,9 @@ public class L08_A01 {
 				System.out.println("Digite um valor válido!");
 			}
 
-		} while (peso <= 0 && altura <= 0);
+		} while (peso <= 0 || altura <= 0);
 
-		imc = peso / altura * altura;
+		imc = peso / (altura * altura);
 
 		System.out.println(imc);
 

@@ -6,7 +6,7 @@ public class L08_A06 {
 
         Scanner sc = new Scanner(System.in);
 
-        for(int f = 1; f <= 10; f++){
+        for(int f = 1; f <= 15; f++){
             System.out.println("Digite o seu Salário: ");
             double s = sc.nextDouble();
 
