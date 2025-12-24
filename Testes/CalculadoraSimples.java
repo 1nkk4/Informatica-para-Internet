@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// Calculadora simples para operações básicas //
+// Calculadora simples para operações básicas
 
 public class CalculadoraSimples {
     public static void main(String[] args) {
