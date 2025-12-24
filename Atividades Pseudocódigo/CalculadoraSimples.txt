@@ -1,0 +1,41 @@
+Algoritmo "Calculadora Simples"
+var
+    num1, num2, resultado: real
+    operacao: inteiro
+início
+    escreva "=== Calculadora Simples ==="
+    escreva "Digite o primeiro número: "
+    leia num1
+    
+    escreva "Digite o segundo número: "
+    leia num2
+    
+    escreva "Escolha a operação:"
+    escreva "1 - Adição (+)"
+    escreva "2 - Subtração (-)"
+    escreva "3 - Multiplicação (*)"
+    escreva "4 - Divisão (/)"
+    escreva "Opção: "
+    leia operacao
+    
+    escolha operacao
+        caso 1:
+            resultado <- num1 + num2
+            escreva "Resultado: ", num1, " + ", num2, " = ", resultado
+        caso 2:
+            resultado <- num1 - num2
+            escreva "Resultado: ", num1, " - ", num2, " = ", resultado
+        caso 3:
+            resultado <- num1 * num2
+            escreva "Resultado: ", num1, " * ", num2, " = ", resultado
+        caso 4:
+            se num2 <> 0 então
+                resultado <- num1 / num2
+                escreva "Resultado: ", num1, " / ", num2, " = ", resultado
+            senão
+                escreva "Erro: Divisão por zero não é permitida!"
+            fim se
+        outrocaso:
+            escreva "Opção inválida!"
+    fim escolha
+fim

@@ -10,6 +10,15 @@ Este repositório foi criado para organizar e armazenar os trabalhos e atividade
   - Contém exercícios e atividades realizadas em Java, organizados por listas e tópicos.
   - Inclui atividades de recuperação, listas de exercícios e outros trabalhos.
 
+- **Atividades Pseudocódigo**
+  - Contém algoritmos escritos em pseudocódigo para estudo e referência.
+
+- **Testes**
+  - Exemplos de código Java para testes e aprendizado.
+
+- **Enunciados**
+  - PDFs com as listas de exercícios e trabalhos propostos.
+
 ---
 
 ## 📋 Como Utilizar
