@@ -139,8 +139,7 @@ public void SomDivisores() {
 
 
 	public static void main(String[] args) {
-		Atividade18 contas;
-		contas= new Atividade18();
+		Atividade18 contas= new Atividade18();
 		int i;
 
 
