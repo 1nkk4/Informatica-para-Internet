@@ -1,0 +1,65 @@
+    body {
+        background-image: url('https://img.magnific.com/fotos-gratis/homem-barbudo-expressivo-vestindo-camisa_273609-5928.jpg');
+        background-color: white;
+        background-attachment: fixed;
+        background-position: center;
+        font-family: "MS UI Gothic", Arial, sans-serif;
+        font-size: 16px;
+        background-size: 2px;
+    }
+    
+    .container {
+      display: grid;
+      grid-template-areas:
+      "header header"
+      "menu content"
+      "footer footer";
+      grid-template-columns: 1fr 7fr;
+      grid-template-rows: auto minmax(70vh, auto);
+      
+      gap: 1px;
+      background-color: #231F20;
+      padding: 2px;
+    }
+    
+    .container div {
+      background-color: white;
+      padding: 10px;
+    }
+    
+    .container div.header {
+      grid-area: header;
+      background-color: #E8DBC5;
+      text-align: center;
+      margin: 0;
+      
+    }
+    
+    .image:hover {
+      filter: sepia(100%);
+    }
+    
+    
+    .container div.menu {
+      grid-area: menu;
+      background-color: #A5907E;
+      
+
+    }
+    
+    .container .content {
+      grid-area: content;
+    }
+    
+    .login {  
+        display: flex;
+        justify-content: center;
+    }
+    
+    .container div.footer {
+      grid-area: footer;
+      background-color: #E8DBC5;
+      text-align: center;  
+    }
+    
+   
