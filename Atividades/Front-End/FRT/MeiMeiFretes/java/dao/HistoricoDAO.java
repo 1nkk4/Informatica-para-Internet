@@ -4,27 +4,31 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import model.StatusEncomenda;
-import util.Conexao;
+import modelo.Historico;
+import dao.Conexao;
 
-public class StatusEncomendaDAO {
+public class HistoricoDAO {
 
-    public void cadastrarStatusInicial(StatusEncomenda status) {
+    // REGISTRAR NOVA MOVIMENTAÇÃO
+    public void registrarHistorico(HistoricoDAO historico) {
 
-        String sql = "INSERT INTO status_encomenda "
-                + "(id_encomenda, id_tipo_status, descricao, data) "
-                + "VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO historico "
+                + "(id_encomenda, id_tipo_status, id_localizacao, descricao, data) "
+                + "VALUES (?, ?, ?, ?, ?)";
 
         try {
             Connection conexao = Conexao.getConnection();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
-            stmt.setInt(1, status.getIdEncomenda());
-            stmt.setInt(2, status.getIdTipoStatus());
-            stmt.setString(3, status.getDescricao());
-            stmt.setString(4, status.getData());
+            stmt.setInt(1, historico.getIdEncomenda());
+            stmt.setInt(2, historico.getIdTipoStatus());
+            stmt.setInt(3, historico.getIdLocalizacao());
+            stmt.setString(4, historico.getDescricao());
+            stmt.setString(5, historico.getData());
 
             stmt.executeUpdate();
 
@@ -37,9 +41,14 @@ public class StatusEncomendaDAO {
     }
 
 
-    public StatusEncomenda buscarStatusAtual(int idEncomenda) {
+    // CONSULTAR HISTÓRICO DE UMA ENCOMENDA
+    public List<HistoricoDAO> listarHistorico(int idEncomenda) {
 
-        String sql = "SELECT * FROM status_encomenda WHERE id_encomenda = ?";
+        List<HistoricoDAO> lista = new ArrayList<>();
+
+        String sql = "SELECT * FROM historico "
+                + "WHERE id_encomenda = ? "
+                + "ORDER BY id_historico ASC";
 
         try {
             Connection conexao = Conexao.getConnection();
@@ -50,20 +59,17 @@ public class StatusEncomendaDAO {
 
             ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
 
-                StatusEncomenda status = new StatusEncomenda(
+                HistoricoDAO historico = new Historico(
                     rs.getInt("id_encomenda"),
                     rs.getInt("id_tipo_status"),
+                    rs.getInt("id_localizacao"),
                     rs.getString("descricao"),
                     rs.getString("data")
                 );
 
-                rs.close();
-                stmt.close();
-                conexao.close();
-
-                return status;
+                lista.add(historico);
             }
 
             rs.close();
@@ -74,33 +80,6 @@ public class StatusEncomendaDAO {
             e.printStackTrace();
         }
 
-        return null;
-    }
-
-
-    public void atualizarStatus(StatusEncomenda status) {
-
-        String sql = "UPDATE status_encomenda "
-                + "SET id_tipo_status = ?, descricao = ?, data = ? "
-                + "WHERE id_encomenda = ?";
-
-        try {
-            Connection conexao = Conexao.getConnection();
-
-            PreparedStatement stmt = conexao.prepareStatement(sql);
-
-            stmt.setInt(1, status.getIdTipoStatus());
-            stmt.setString(2, status.getDescricao());
-            stmt.setString(3, status.getData());
-            stmt.setInt(4, status.getIdEncomenda());
-
-            stmt.executeUpdate();
-
-            stmt.close();
-            conexao.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        return lista;
     }
 }
