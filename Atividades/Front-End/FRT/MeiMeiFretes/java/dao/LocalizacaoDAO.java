@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Localizacao;
-import util.Conexao;
+import modelo.Localizacao;
+import dao.Conexao;
 
 public class LocalizacaoDAO {
 
