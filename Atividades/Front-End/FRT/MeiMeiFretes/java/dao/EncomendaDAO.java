@@ -1,56 +1,40 @@
-package model;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class Encomenda {
+import model.Encomenda;
+import util.Conexao;
 
-    private int idEncomenda;
-    private long codigoRastreamento;
-    private String nome;
-    private String descricao;
-    private int idFornecedor;
-    private int idOrigem;
-    private int idDestino;
-    private int idLocalizacaoAtual;
-    private String dataCriacao;
+public class EncomendaDAO {
 
-    public Encomenda(String nome, String descricao,
-            int idFornecedor, int idOrigem,
-            int idDestino, int idLocalizacaoAtual,
-            String dataCriacao) {
+    public void cadastrarEncomenda(Encomenda encomenda) {
 
-        this.nome = nome;
-        this.descricao = descricao;
-        this.idFornecedor = idFornecedor;
-        this.idOrigem = idOrigem;
-        this.idDestino = idDestino;
-        this.idLocalizacaoAtual = idLocalizacaoAtual;
-        this.dataCriacao = dataCriacao;
-    }
+        String sql = "INSERT INTO encomenda "
+                + "(nome, descricao, id_fornecedor, "
+                + "id_origem, id_destino, "
+                + "id_localizacao_atual, data_criacao) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    public String getNome() {
-        return nome;
-    }
+        try {
+            Connection conexao = Conexao.getConnection();
 
-    public String getDescricao() {
-        return descricao;
-    }
+            PreparedStatement stmt = conexao.prepareStatement(sql);
 
-    public int getIdFornecedor() {
-        return idFornecedor;
-    }
+            stmt.setString(1, encomenda.getNome());
+            stmt.setString(2, encomenda.getDescricao());
+            stmt.setInt(3, encomenda.getIdFornecedor());
+            stmt.setInt(4, encomenda.getIdOrigem());
+            stmt.setInt(5, encomenda.getIdDestino());
+            stmt.setInt(6, encomenda.getIdLocalizacaoAtual());
+            stmt.setString(7, encomenda.getDataCriacao());
 
-    public int getIdOrigem() {
-        return idOrigem;
-    }
+            stmt.executeUpdate();
 
-    public int getIdDestino() {
-        return idDestino;
-    }
+            stmt.close();
+            conexao.close();
 
-    public int getIdLocalizacaoAtual() {
-        return idLocalizacaoAtual;
-    }
-
-    public String getDataCriacao() {
-        return dataCriacao;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
