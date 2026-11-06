@@ -8,7 +8,6 @@ import util.Conexao;
 
 public class LocalizacaoDAO {
 
-    // CADASTRAR LOCALIZAÇÃO
     public void cadastrarLocalizacao(Localizacao localizacao) {
 
         String sql = "INSERT INTO localizacao (cidade, estado, codigo) VALUES (?, ?, ?)";
@@ -33,7 +32,6 @@ public class LocalizacaoDAO {
     }
 
 
-    // BUSCAR LOCALIZAÇÃO PELO ID
     public Localizacao buscarLocalizacao(int id) {
 
         String sql = "SELECT * FROM localizacao WHERE id_localizacao = ?";
