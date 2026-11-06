@@ -1,3 +1,4 @@
+package model;
 public class Historico {
 
     private int idHistorico;
