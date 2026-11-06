@@ -1,32 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Page</title>
-    <link href="style.css" rel="stylesheet" type="text/css" media="all">
-  </head>
-  <body>
-    <div class="container">
-      <div class="header"><a href=  "/"><img class="image"  src="src/meimei.png" align="left"></a></div>
-      
-      <div class="menu"><a href="/">Ínicio</a><br><a href="rastreamento">Rastreamento</a><br><a href="login">Login/Registro</a><br><a href="sobrenos">Sobre Nós</a></div>
-      
-      <div class="content">
-        <div class="login">
-          <form>
-            <label for="fname">Email:</label><br>
-            <input type="text" id="mail" name="mail"><br>
-            <label for="lname">Senha:</label><br>
-            <input type="text" id="pass" name="pass"><br><br>
-            <input type="submit" value="Submit">
-          </form>
-        </div>
-      </div>
-      
-      <div class="footer">MeiMeiFretes &reg; 2026</div>
-  </div>
-      
+<%@ page import="java.sql.*" %>
+<%@ page import="dao.Conexao" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
-  </body>
-</html>
+<%
+String cpf = request.getParameter("cpf");
+String senha = request.getParameter("senha");
+
+if (cpf == null || senha == null ||
+    cpf.isEmpty() || senha.isEmpty()) {
+
+    response.sendRedirect("");
+    return;
+}
+
+String sql = "SELECT nome, senha FROM usuario WHERE cpf = ?";
+
+try (Connection con = Conexao.conectar();
+    PreparedStatement stmt = con.prepareStatement(sql)) {
+
+    stmt.setString(1, cpf);	
+
+    try (ResultSet rs = stmt.executeQuery()) {
+
+        if (rs.next() && senha.equals(rs.getString("senha"))) {
+            session.setAttribute("nome", rs.getString("nome"));
+            response.sendRedirect("dashboard.jsp");
+        } 
+        
+        else {
+            response.sendRedirect("legal");
+        }
+    }
+
+} catch (SQLException erro) {
+    erro.printStackTrace();
+    response.sendRedirect("");
+}
+%>
