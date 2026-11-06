@@ -1,3 +1,4 @@
+package model;
 public class TipoStatus {
 
     private int idTipoStatus;
