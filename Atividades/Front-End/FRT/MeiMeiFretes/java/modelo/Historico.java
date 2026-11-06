@@ -12,7 +12,7 @@ public class Historico {
             int idLocalizacao, String descricao, String data) {
 
         this.idEncomenda = idEncomenda;
-        this.idTipoStatus = idTipoStatus;
+        this.idTipoStatus = idTipoStatus; //são 01:10 do dia 06/11 e eu nao aguento mais
         this.idLocalizacao = idLocalizacao;
         this.descricao = descricao;
         this.data = data;
