@@ -1,3 +1,5 @@
+package model;
+
 public class StatusEncomenda {
 
     private int idStatus;
