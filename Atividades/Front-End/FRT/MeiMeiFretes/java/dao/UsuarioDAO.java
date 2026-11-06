@@ -13,7 +13,7 @@ public class UsuarioDAO {
         String sql = "INSERT INTO usuario (nome, cpf, tipo) VALUES (?, ?, ?)";
 
         try {
-            Connection conexao = Conexao.getConnection();
+            Connection conexao = Conexao.conectar();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
