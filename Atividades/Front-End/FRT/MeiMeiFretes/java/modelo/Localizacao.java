@@ -1,3 +1,5 @@
+package model;
+
 public class Localizacao {
 
     private int idLocalizacao;
