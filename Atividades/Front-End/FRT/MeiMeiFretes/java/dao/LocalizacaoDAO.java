@@ -1,29 +1,75 @@
-public class Localizacao {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-    private int idLocalizacao;
-    private String cidade;
-    private String estado;
-    private String codigo;
+import model.Localizacao;
+import util.Conexao;
 
-    public Localizacao(String cidade, String estado, String codigo) {
-        this.cidade = cidade;
-        this.estado = estado;
-        this.codigo = codigo;
+public class LocalizacaoDAO {
+
+    // CADASTRAR LOCALIZAÇÃO
+    public void cadastrarLocalizacao(Localizacao localizacao) {
+
+        String sql = "INSERT INTO localizacao (cidade, estado, codigo) VALUES (?, ?, ?)";
+
+        try {
+            Connection conexao = Conexao.getConnection();
+
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+
+            stmt.setString(1, localizacao.getCidade());
+            stmt.setString(2, localizacao.getEstado());
+            stmt.setString(3, localizacao.getCodigo());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public int getIdLocalizacao() {
-        return idLocalizacao;
-    }
 
-    public String getCidade() {
-        return cidade;
-    }
+    // BUSCAR LOCALIZAÇÃO PELO ID
+    public Localizacao buscarLocalizacao(int id) {
 
-    public String getEstado() {
-        return estado;
-    }
+        String sql = "SELECT * FROM localizacao WHERE id_localizacao = ?";
 
-    public String getCodigo() {
-        return codigo;
+        try {
+            Connection conexao = Conexao.getConnection();
+
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+
+                Localizacao localizacao = new Localizacao(
+                    rs.getString("cidade"),
+                    rs.getString("estado"),
+                    rs.getString("codigo")
+                );
+
+                rs.close();
+                stmt.close();
+                conexao.close();
+
+                return localizacao;
+            }
+
+            rs.close();
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
