@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.StatusEncomenda;
-import util.Conexao;
+import modelo.StatusEncomenda;
+import dao.Conexao;
 
 public class StatusEncomendaDAO {
 
