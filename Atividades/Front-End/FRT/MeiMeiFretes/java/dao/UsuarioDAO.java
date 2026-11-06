@@ -3,8 +3,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import model.Usuario;
-import util.Conexao;
+import modelo.Usuario;
+import dao.Conexao;
 
 public class UsuarioDAO {
 
