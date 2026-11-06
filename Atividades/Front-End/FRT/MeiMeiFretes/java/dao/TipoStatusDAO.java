@@ -19,7 +19,7 @@ public class TipoStatusDAO {
         String sql = "SELECT * FROM tipo_status";
 
         try {
-            Connection conexao = Conexao.getConnection();
+            Connection conexao = Conexao.conectar();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
