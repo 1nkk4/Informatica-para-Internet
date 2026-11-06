@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.TipoStatus;
-import util.Conexao;
+import modelo.TipoStatus;
+import dao.Conexao;
 
 public class TipoStatusDAO {
 
