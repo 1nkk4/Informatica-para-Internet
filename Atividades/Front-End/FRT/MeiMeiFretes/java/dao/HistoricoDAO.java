@@ -20,7 +20,7 @@ public class HistoricoDAO {
                 + "VALUES (?, ?, ?, ?, ?)";
 
         try {
-            Connection conexao = Conexao.getConnection();
+            Connection conexao = Conexao.conectar();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
