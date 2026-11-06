@@ -18,7 +18,7 @@ public class EncomendaDAO {
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            Connection conexao = Conexao.getConnection();
+            Connection conexao = Conexao.conectar();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
