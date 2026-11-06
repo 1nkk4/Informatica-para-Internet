@@ -15,7 +15,7 @@ public class LocalizacaoDAO {
         String sql = "INSERT INTO localizacao (cidade, estado, codigo) VALUES (?, ?, ?)";
 
         try {
-            Connection conexao = Conexao.getConnection();
+            Connection conexao = Conexao.conectar();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
