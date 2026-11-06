@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import model.Encomenda;
-import util.Conexao;
+import modelo.Encomenda;
+import dao.Conexao;
 
 public class EncomendaDAO {
 
