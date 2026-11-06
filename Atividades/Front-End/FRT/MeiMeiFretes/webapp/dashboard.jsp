@@ -19,13 +19,13 @@
       <div class="content">
         <div class="login">
 			<form method="post" action="login.jsp">
-			  <label for="cpf">CPF:</label><br>
-			  <input type="text" id="cpf" name="cpf" required><br>
+			    <label for="cpf">CPF:</label><br>
+			    <input type="text" id="cpf" name="cpf" required><br>
 			
-			  <label for="senha">Senha:</label><br>
-			  <input type="password" id="senha" name="senha" required><br><br>
+			    <label for="senha">Senha:</label><br>
+			    <input type="password" id="senha" name="senha" required><br><br>
 			
-			  <input type="submit" value="Entrar">
+			    <input type="submit" value="Entrar">
 			</form>
 
         </div>
