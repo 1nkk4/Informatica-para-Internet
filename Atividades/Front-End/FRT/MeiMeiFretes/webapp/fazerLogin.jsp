@@ -12,7 +12,7 @@ if (cpf == null || senha == null ||
     return;
 }
 
-String sql = "SELECT nome, senha FROM usuario WHERE cpf = ?";
+String sql = "SELECT nome, senha, tipo FROM usuario WHERE cpf = ?";
 
 try (
     Connection con = Conexao.conectar();
@@ -22,16 +22,20 @@ try (
 
     try (ResultSet rs = stmt.executeQuery()) {
         if (rs.next() && senha.equals(rs.getString("senha"))) {
+        	
         	session.setAttribute("nome", rs.getString("nome"));
+            session.setAttribute("cpf", cpf.trim());
+            session.setAttribute("tipo", rs.getString("tipo"));
+            
         	response.sendRedirect("dashboard.jsp");
             return;
         }
     }
 
-    response.sendRedirect("dashboard.jsp?erro=login");
+    response.sendRedirect("login.jsp?erro=login");
 
 } catch (SQLException erro) {
     erro.printStackTrace();
-    response.sendRedirect("dashboard.jsp?erro=banco");
+    response.sendRedirect("login.jsp?erro=banco");
 }
 %>

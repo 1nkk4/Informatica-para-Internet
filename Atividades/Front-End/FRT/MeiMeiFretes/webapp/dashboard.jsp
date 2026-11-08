@@ -1,50 +1,38 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="dao.*" %>
 
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  
 <%
 String nome = (String) session.getAttribute("nome");
+String tipo = (String) session.getAttribute("tipo");
 
 if (nome == null) {
     response.sendRedirect("login.jsp?erro=naoLogado");
     return;
 }
-%>
+%>  
+  
+  
+  <body>
+    <div class="container">
+      <div class="header"><a href=  "index.jsp"><img class="image"  src="src/meimei.png" align="left"></a></div>
+      
+      <div class="menu"><a href="index.jsp">Õnicio</a><br><a href="rastreamento.jsp">Rastreamento</a><br><a href="login.jsp">Login/Registro</a><br><a href="sobrenos.jsp">Sobre NÛs</a></div>
+      
+      <div class="content">
+        <p>Bem-vindo, <strong><%=tipo%></strong> <%=nome%>! </p>
+      </div>
+      
+      <div class="footer">MeiMeiFretes &reg; 2026</div>
+  </div>
+      
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/style.css">
-</head>
-<body>
-
-<div class="container">
-    <header>
-        <h1>MeiMeiFretes</h1>
-        <p>Bem-vindo, <strong><%= nome %></strong>!</p>
-    </header>
-
-    <nav>
-        <a href="${pageContext.request.contextPath}/dashboard.jsp">
-            In√≠cio
-        </a>
-        <a href="${pageContext.request.contextPath}/rastreamento.jsp">
-            Rastrear encomenda
-        </a>
-        <a href="${pageContext.request.contextPath}/perfil.jsp">
-            Meu perfil
-        </a>
-        <a href="${pageContext.request.contextPath}/logout.jsp">
-            Sair
-        </a>
-    </nav>
-
-    <main>
-        <h2>Painel principal</h2>
-        <p>Escolha uma op√ß√£o no menu acima.</p>
-    </main>
-</div>
-
-</body>
+  </body>
 </html>

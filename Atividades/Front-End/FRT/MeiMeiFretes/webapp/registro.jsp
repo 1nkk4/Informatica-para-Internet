@@ -12,27 +12,30 @@
   </head>
   <body>
     <div class="container">
-      <div class="header"><a href=  "/"><img class="image"  src="src/meimei.png" align="left"></a></div>
+      <div class="header"><a href=  "index.jsp"><img class="image"  src="src/meimei.png" align="left"></a></div>
       
-      <div class="menu"><a href="/">Inicio</a><br><a href="rastreamento">Rastreamento</a><br><a href="login">Login/Registro</a><br><a href="sobrenos">Sobre Nós</a></div>
+      <div class="menu"><a href="index.jsp">Inicio</a><br><a href="rastreamento.jsp">Rastreamento</a><br><a href="sobrenos.jsp">Sobre Nós</a><br><a href="registro.jsp">Registro</a><br><a href="login.jsp">Login</a></div>
       
         <div class="content">
-            <form method="post"
-      			action="${pageContext.request.contextPath}/fazerRegistro.jsp">
-				<label for="cpf">CPF:</label><br>
-				<input type="text" name="cpf" required>
-				<br>
-				
-				<label for="nome">Nome:</label><br>
-				<input type="text" name="nome" required>
-				<br>
-				
-				<label for="senha">Senha:</label><br>
-				<input type="password" name="senha" required>
-				<br>
-				
-                <input type="submit" value="Entrar">
-            </form>
+        	<div class="login">
+	            <form method="post"
+	      			action="fazerRegistro.jsp"><br><br>
+	      			
+					<label for="cpf">CPF:</label><br>
+					<input type="text" name="cpf" required>
+					<br>
+					
+					<label for="nome">Nome:</label><br>
+					<input type="text" name="nome" required>
+					<br>
+					
+					<label for="senha">Senha:</label><br>
+					<input type="password" name="senha" required>
+					<br><br>
+					
+	                <input type="submit" value="Entrar">
+	            </form>
+            </div>
         </div>
       
       <div class="footer">MeiMeiFretes &reg; 2026</div>

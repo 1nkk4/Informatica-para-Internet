@@ -12,7 +12,7 @@ if (nome == null || cpf == null || senha == null ||
     cpf.trim().isEmpty() ||
     senha.trim().isEmpty()) {
 
-    response.sendRedirect("fazerRegistro.jsp?erro=campos");
+    response.sendRedirect("registro.jsp?erro=campos");
     return;
 }
 
@@ -27,7 +27,7 @@ try (
 
     try (ResultSet rs = consultaStmt.executeQuery()) {
         if (rs.next()) {
-            response.sendRedirect("fazerRegistro.jsp?erro=usuarioexistente");
+            response.sendRedirect("registro.jsp?erro=usuarioexistente");
             return;
         }
     }
@@ -41,12 +41,12 @@ try (
         insercaoStmt.executeUpdate();
     }
 
-    response.sendRedirect("fazerLogin.jsp");
+    response.sendRedirect("login.jsp");
     return;
 
 } catch (SQLException erro) {
     erro.printStackTrace();
-    response.sendRedirect("fazerRegistro.jsp?erro=banco");
+    response.sendRedirect("registro.jsp?erro=banco");
     return;
 }
 %>
