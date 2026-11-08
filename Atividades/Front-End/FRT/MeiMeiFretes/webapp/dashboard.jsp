@@ -1,39 +1,50 @@
-<%@ page language="java"
-    contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<%
+String nome = (String) session.getAttribute("nome");
+
+if (nome == null) {
+    response.sendRedirect("login.jsp?erro=naoLogado");
+    return;
+}
+%>
 
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Page</title>
-    <link href="style.css" rel="stylesheet" type="text/css" media="all">
-  </head>
-  <body>
-    <div class="container">
-      <div class="header"><a href=  "/"><img class="image"  src="src/meimei.png" align="left"></a></div>
-      
-      <div class="menu"><a href="/">Inicio</a><br><a href="rastreamento">Rastreamento</a><br><a href="login">Login/Registro</a><br><a href="sobrenos">Sobre Nós</a></div>
-      
-      <div class="content">
-        <div class="login">
-			<form method="post" action="login.jsp">
-			    <label for="cpf">CPF:</label><br>
-			    <input type="text" id="cpf" name="cpf" required><br>
-			
-			    <label for="senha">Senha:</label><br>
-			    <input type="password" id="senha" name="senha" required><br><br>
-			
-			    <input type="submit" value="Entrar">
-			</form>
+    <title>Dashboard</title>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/style.css">
+</head>
+<body>
 
-        </div>
-      </div>
-      
-      <div class="footer">MeiMeiFretes &reg; 2026</div>
-  </div>
-      
+<div class="container">
+    <header>
+        <h1>MeiMeiFretes</h1>
+        <p>Bem-vindo, <strong><%= nome %></strong>!</p>
+    </header>
 
-  </body>
+    <nav>
+        <a href="${pageContext.request.contextPath}/dashboard.jsp">
+            Início
+        </a>
+        <a href="${pageContext.request.contextPath}/rastreamento.jsp">
+            Rastrear encomenda
+        </a>
+        <a href="${pageContext.request.contextPath}/perfil.jsp">
+            Meu perfil
+        </a>
+        <a href="${pageContext.request.contextPath}/logout.jsp">
+            Sair
+        </a>
+    </nav>
+
+    <main>
+        <h2>Painel principal</h2>
+        <p>Escolha uma opção no menu acima.</p>
+    </main>
+</div>
+
+</body>
 </html>

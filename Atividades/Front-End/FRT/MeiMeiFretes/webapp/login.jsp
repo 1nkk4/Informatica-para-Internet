@@ -1,39 +1,38 @@
-<%@ page import="java.sql.*" %>
-<%@ page import="dao.Conexao" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java"
+    contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
 
-<%
-String cpf = request.getParameter("cpf");
-String senha = request.getParameter("senha");
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header"><a href=  "/"><img class="image"  src="src/meimei.png" align="left"></a></div>
+      
+      <div class="menu"><a href="/">Inicio</a><br><a href="rastreamento">Rastreamento</a><br><a href="login">Login/Registro</a><br><a href="sobrenos">Sobre Nós</a></div>
+      
+        <div class="content">
+            <form method="post"
+                  action="${pageContext.request.contextPath}/fazerLogin.jsp">
 
-if (cpf == null || senha == null ||
-    cpf.trim().isEmpty() || senha.isEmpty()) {
+                <label for="cpf">CPF:</label><br>
+                <input type="text" id="cpf" name="cpf" required><br>
 
-    response.sendRedirect("login?erro=campos");
-    return;
-}
+                <label for="senha">Senha:</label><br>
+                <input type="password" id="senha" name="senha" required><br><br>
 
-String sql = "SELECT nome, senha FROM usuario WHERE cpf = ?";
+                <input type="submit" value="Entrar">
+            </form>
+        </div>
+      
+      <div class="footer">MeiMeiFretes &reg; 2026</div>
+  </div>
+      
 
-try (Connection con = Conexao.conectar();
-     PreparedStatement stmt = con.prepareStatement(sql)) {
-
-    stmt.setString(1, cpf.trim());
-
-    try (ResultSet rs = stmt.executeQuery()) {
-
-        if (rs.next() && senha.equals(rs.getString("senha"))) {
-            session.setAttribute("nome", rs.getString("nome"));
-            response.sendRedirect("dashboard.jsp");
-            return;
-        }
-
-        response.sendRedirect("login?erro=login");
-        return;
-    }
-
-} catch (SQLException erro) {
-    erro.printStackTrace();
-    response.sendRedirect("login?erro=banco");
-}
-%>
+  </body>
+</html>
