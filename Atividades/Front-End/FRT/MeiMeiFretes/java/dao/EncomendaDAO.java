@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import modelo.Encomenda;
-import dao.Conexao;
 
 public class EncomendaDAO {
 

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.TipoStatus;
-import dao.Conexao;
 
 public class TipoStatusDAO {
 

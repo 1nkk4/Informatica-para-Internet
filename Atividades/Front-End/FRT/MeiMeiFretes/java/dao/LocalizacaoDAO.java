@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.Localizacao;
-import dao.Conexao;
 
 public class LocalizacaoDAO {
 
@@ -39,7 +38,7 @@ public class LocalizacaoDAO {
         String sql = "SELECT * FROM localizacao WHERE id_localizacao = ?";
 
         try {
-            Connection conexao = Conexao.getConnection();
+            Connection conexao = Conexao.conectar();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
 

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.StatusEncomenda;
-import dao.Conexao;
 
 public class StatusEncomendaDAO {
 
@@ -44,7 +43,7 @@ public class StatusEncomendaDAO {
         String sql = "SELECT * FROM status_encomenda WHERE id_encomenda = ?";
 
         try {
-            Connection conexao = Conexao.getConnection();
+            Connection conexao = Conexao.conectar();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
@@ -88,7 +87,7 @@ public class StatusEncomendaDAO {
                 + "WHERE id_encomenda = ?";
 
         try {
-            Connection conexao = Conexao.getConnection();
+            Connection conexao = Conexao.conectar();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
