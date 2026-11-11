@@ -8,78 +8,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Historico;
-import dao.Conexao;
 
 public class HistoricoDAO {
 
-    // REGISTRAR NOVA MOVIMENTAÇÃO
-    public void registrarHistorico(HistoricoDAO historico) {
+	public void registrarHistorico(Historico historico) {
 
-        String sql = "INSERT INTO historico "
-                + "(id_encomenda, id_tipo_status, id_localizacao, descricao, data) "
-                + "VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO historico " + "(id_encomenda, id_tipo_status, id_localizacao, descricao, data) "
+				+ "VALUES (?, ?, ?, ?, ?)";
 
-        try {
-            Connection conexao = Conexao.conectar();
+		try (Connection conexao = Conexao.conectar(); PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
-            PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, historico.getIdEncomenda());
+			stmt.setInt(2, historico.getIdTipoStatus());
+			stmt.setInt(3, historico.getIdLocalizacao());
+			stmt.setString(4, historico.getDescricao());
+			stmt.setString(5, historico.getData());
 
-            stmt.setInt(1, historico.getIdEncomenda());
-            stmt.setInt(2, historico.getIdTipoStatus());
-            stmt.setInt(3, historico.getIdLocalizacao());
-            stmt.setString(4, historico.getDescricao());
-            stmt.setString(5, historico.getData());
+			stmt.executeUpdate();
 
-            stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
-            stmt.close();
-            conexao.close();
+	// CONSULTAR HISTÓRICO DE UMA ENCOMENDA
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+	public List<Historico> listarHistorico(int idEncomenda) {
 
+		// armazena o registro encontrado
+		List<Historico> lista = new ArrayList<>();
 
-    // CONSULTAR HISTÓRICO DE UMA ENCOMENDA
-    public List<HistoricoDAO> listarHistorico(int idEncomenda) {
+		// seleciona os registros da encomenda informada e ordena por id
 
-        List<HistoricoDAO> lista = new ArrayList<>();
+		String sql = "SELECT * FROM historico " + "WHERE id_encomenda = ? " + "ORDER BY id_historico ASC";
 
-        String sql = "SELECT * FROM historico "
-                + "WHERE id_encomenda = ? "
-                + "ORDER BY id_historico ASC";
+		try (Connection conexao = Conexao.conectar(); PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
-        try {
-            Connection conexao = Conexao.getConnection();
+			stmt.setInt(1, idEncomenda);
 
-            PreparedStatement stmt = conexao.prepareStatement(sql);
+			try (ResultSet rs = stmt.executeQuery()) {
 
-            stmt.setInt(1, idEncomenda);
+				// Percorre cada linha retornada pelo banco
+				while (rs.next()) {
 
-            ResultSet rs = stmt.executeQuery();
+					// Cria um objeto Historico com os valores das colunas dessa linha
+					Historico historico = new Historico(rs.getInt("id_encomenda"), rs.getInt("id_tipo_status"),
+							rs.getInt("id_localizacao"), rs.getString("descricao"), rs.getString("data"));
 
-            while (rs.next()) {
+					lista.add(historico);
+				}
+			}
 
-                HistoricoDAO historico = new Historico(
-                    rs.getInt("id_encomenda"),
-                    rs.getInt("id_tipo_status"),
-                    rs.getInt("id_localizacao"),
-                    rs.getString("descricao"),
-                    rs.getString("data")
-                );
+		} catch (SQLException e) {
 
-                lista.add(historico);
-            }
+			e.printStackTrace();
+		}
 
-            rs.close();
-            stmt.close();
-            conexao.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return lista;
-    }
+		return lista;
+	}
 }
