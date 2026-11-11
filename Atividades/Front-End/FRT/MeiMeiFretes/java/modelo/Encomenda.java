@@ -2,17 +2,15 @@ package modelo;
 
 public class Encomenda {
 
-    private int idEncomenda;
-    private long codigoRastreamento;
-    private String nome;
-    private String descricao;
-    private int idFornecedor;
-    private int idOrigem;
-    private int idDestino;
-    private int idLocalizacaoAtual;
-    private String dataCriacao;
+    public String nome;
+    public String descricao;
+    public int idFornecedor;
+    public int idOrigem;
+    public int idDestino;
+    public int idLocalizacaoAtual;
+    public String dataCriacao;
 
-    public Encomenda(String nome, String descricao,
+    public void Encomendas(String nome, String descricao,
             int idFornecedor, int idOrigem,
             int idDestino, int idLocalizacaoAtual,
             String dataCriacao) {
