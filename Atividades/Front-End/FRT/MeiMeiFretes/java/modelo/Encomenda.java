@@ -1,5 +1,6 @@
 package modelo;
 
+
 public class Encomenda {
 
     public String nome;
@@ -10,7 +11,9 @@ public class Encomenda {
     public int idLocalizacaoAtual;
     public String dataCriacao;
 
-    public void Encomendas(String nome, String descricao,
+    public void Encomendas(
+    		String nome,
+    		String descricao,
             int idFornecedor, int idOrigem,
             int idDestino, int idLocalizacaoAtual,
             String dataCriacao) {

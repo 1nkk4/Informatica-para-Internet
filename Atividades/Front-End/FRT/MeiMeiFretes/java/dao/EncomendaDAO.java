@@ -20,7 +20,9 @@ public class EncomendaDAO {
             Connection conexao = Conexao.conectar();
 
             PreparedStatement stmt = conexao.prepareStatement(sql);
-
+            
+            
+            
             stmt.setString(1, encomenda.getNome());
             stmt.setString(2, encomenda.getDescricao());
             stmt.setInt(3, encomenda.getIdFornecedor());

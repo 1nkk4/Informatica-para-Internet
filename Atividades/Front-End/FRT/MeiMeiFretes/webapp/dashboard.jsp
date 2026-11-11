@@ -14,7 +14,7 @@
     String nome = (String) session.getAttribute("nome");
     String tipo = (String) session.getAttribute("tipo");
     
-    if (nome == null || tipo != "FORNECEDOR") {
+    if (nome == null) {
 	    response.sendRedirect("index.jsp");
 	    return;
 	}
@@ -77,32 +77,34 @@
       
       <div class="content">
         <p>Bem-vindo, <%=tipo%> <strong><%=nome%></strong>! </p>
-        	    <label for="nome">Nome:</label><br>
-		<input type="text" name="nome" required>
-		<br>
-						
-		<label for="descricao">Descrição:</label><br>
-		<input type="text" name="descricao">
-		<br>
-		
-		<label for="id_fornecedor">Id do Fornecedor:</label><br>
-		<input type="text" name="id_fornecedor" required>
-		<br>
-		
-		<label for="id_origem">Id da origem:</label><br>
-		<input type="text" name="id_origem" required>
-		<br>
-		
-		<label for="id_localizacao">Id da localização:</label><br>
-		<input type="text" name="id_localizacao" required>
-		<br>
-		
-		<label for="data">Data:</label><br>
-		<input type="text" name="data" required>
-		<br>
-		<input type="submit" value="Enviar">
-		
-		<br>
+        <form method="post" action=""><br><br>
+	       	<label for="nome">Nome:</label><br>
+			<input type="text" name="nome" required>
+			<br>
+							
+			<label for="descricao">Descrição:</label><br>
+			<input type="text" name="descricao">
+			<br>
+			
+			<label for="id_fornecedor">Id do Fornecedor:</label><br>
+			<input type="text" name="id_fornecedor" required>
+			<br>
+			
+			<label for="id_origem">Id da origem:</label><br>
+			<input type="text" name="id_origem" required>
+			<br>
+			
+			<label for="id_localizacao">Id da localização:</label><br>
+			<input type="text" name="id_localizacao" required>
+			<br>
+			
+			<label for="data">Data:</label><br>
+			<input type="text" name="data" required>
+			<br>
+			
+			<input type="submit" value="Enviar">
+			<br>
+		</form>
       </div>					
 
 						
