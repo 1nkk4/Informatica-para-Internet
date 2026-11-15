@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.Encomenda;
@@ -39,5 +40,33 @@ public class EncomendaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Encomenda buscarPorCodigoRastreamento(long codigo) {
+        String sql = "SELECT * FROM encomenda WHERE codigo_rastreamento = ?";
+
+        try (Connection conexao = Conexao.conectar(); PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setLong(1, codigo);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Encomenda encomenda = new Encomenda();
+                    encomenda.idEncomenda = rs.getInt("id_encomenda");
+                    encomenda.codigoRastreamento = rs.getLong("codigo_rastreamento");
+                    encomenda.nome = rs.getString("nome");
+                    encomenda.descricao = rs.getString("descricao");
+                    encomenda.idFornecedor = rs.getInt("id_fornecedor");
+                    encomenda.idOrigem = rs.getInt("id_origem");
+                    encomenda.idDestino = rs.getInt("id_destino");
+                    encomenda.idLocalizacaoAtual = rs.getInt("id_localizacao_atual");
+                    encomenda.dataCriacao = rs.getString("data_criacao");
+                    return encomenda;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

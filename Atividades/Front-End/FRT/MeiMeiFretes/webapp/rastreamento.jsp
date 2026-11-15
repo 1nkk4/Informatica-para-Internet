@@ -1,4 +1,6 @@
 <%@ page import="dao.*" %>
+<%@ page import="modelo.*" %>
+<%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,38 +10,88 @@
     <title>My Page</title>
     <link href="style.css" rel="stylesheet" type="text/css" media="all">
   </head>
-  
-	  <%
-	String nome = (String) session.getAttribute("nome");
-	String cpf = (String) session.getAttribute("cpf");
-	
-	
-	
-	if (nome == null || cpf == null) {
-	    response.sendRedirect("login.jsp?erro=naoLogado");
-	    return;
-	}
-	%>  
-  
+
+  <%
+    String nome = (String) session.getAttribute("nome");
+    String cpf = (String) session.getAttribute("cpf");
+
+    if (nome == null || cpf == null) {
+        response.sendRedirect("login.jsp?erro=naoLogado");
+        return;
+    }
+
+    String codigoRastreamento = request.getParameter("codigo");
+    Encomenda encomenda = null;
+    List<Historico> historicos = new ArrayList<>();
+
+    if (codigoRastreamento != null && !codigoRastreamento.trim().isEmpty()) {
+        try {
+            long codigo = Long.parseLong(codigoRastreamento.trim());
+            EncomendaDAO encomendaDAO = new EncomendaDAO();
+            encomenda = encomendaDAO.buscarPorCodigoRastreamento(codigo);
+
+            if (encomenda != null) {
+                HistoricoDAO historicoDAO = new HistoricoDAO();
+                historicos = historicoDAO.listarHistorico(encomenda.getIdEncomenda());
+            }
+        } catch (NumberFormatException e) {
+            encomenda = null;
+            historicos = new ArrayList<>();
+        }
+    }
+  %>
+
   <body>
     <div class="container">
-      <div class="header"><a href=  "index.jsp"><img class="image"  src="src/meimei.png" align="left"></a></div>
-      
-      <div class="menu"><a href="index.jsp">√çnicio</a><br><a href="rastreamento.jsp">Rastreamento</a><br><a href="sobrenos.jsp">Sobre N√≥s</a><br><a href="logout.jsp">Logout</a></div>
-      
-      <div class="content">
-        <p>Ol·, <%=nome%> (<%=cpf%>) </p>
-        <table>
-	        <tr>
-	        	<th>
-	        	</th>
-	        </tr>
-        </table>
-      </div>
-      
-      <div class="footer">MeiMeiFretes &reg; 2026</div>
-  </div>
-      
+      <div class="header"><a href="index.jsp"><img class="image" src="src/meimei.png" align="left"></a></div>
 
+      <div class="menu"><a href="index.jsp">Õnicio</a><br><a href="rastreamento.jsp">Rastreamento</a><br><a href="sobrenos.jsp">Sobre NÛs</a><br><a href="logout.jsp">Logout</a></div>
+
+      <div class="content">
+        <p>Ol·, <%=nome%> (<%=cpf%>)</p>
+
+        <form method="get" action="rastreamento.jsp">
+            <label for="codigo">CÛdigo de rastreio:</label><br>
+            <input type="text" id="codigo" name="codigo" value="<%= codigoRastreamento != null ? codigoRastreamento : "" %>"><br><br>
+            <input type="submit" value="Consultar">
+        </form>
+
+        <% if (codigoRastreamento != null && !codigoRastreamento.trim().isEmpty()) { %>
+            <% if (encomenda == null) { %>
+                <p>Encomenda n„o encontrada.</p>
+            <% } else { %>
+                <h3>Encomenda: <%= encomenda.getNome() %></h3>
+                <p><strong>CÛdigo:</strong> <%= encomenda.getCodigoRastreamento() %></p>
+                <p><strong>DescriÁ„o:</strong> <%= encomenda.getDescricao() %></p>
+
+                <table border="1" style="width: 100%; margin-top: 20px;">
+                    <tr>
+                        <th>Data</th>
+                        <th>Status</th>
+                        <th>LocalizaÁ„o</th>
+                        <th>DescriÁ„o</th>
+                    </tr>
+
+                    <% if (historicos == null || historicos.isEmpty()) { %>
+                        <tr>
+                            <td colspan="4">Nenhum histÛrico encontrado.</td>
+                        </tr>
+                    <% } else { %>
+                        <% for (Historico h : historicos) { %>
+                            <tr>
+                                <td><%= h.getData() %></td>
+                                <td><%= h.getIdTipoStatus() %></td>
+                                <td><%= h.getIdLocalizacao() %></td>
+                                <td><%= h.getDescricao() %></td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </table>
+            <% } %>
+        <% } %>
+      </div>
+
+      <div class="footer">MeiMeiFretes &reg; 2026</div>
+    </div>
   </body>
 </html>

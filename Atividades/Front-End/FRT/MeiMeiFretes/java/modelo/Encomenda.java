@@ -3,6 +3,8 @@ package modelo;
 
 public class Encomenda {
 
+    public int idEncomenda;
+    public long codigoRastreamento;
     public String nome;
     public String descricao;
     public int idFornecedor;
@@ -11,7 +13,10 @@ public class Encomenda {
     public int idLocalizacaoAtual;
     public String dataCriacao;
 
-    public void Encomendas(
+    public Encomenda() {
+    }
+
+    public Encomenda(
     		String nome,
     		String descricao,
             int idFornecedor, int idOrigem,
@@ -25,6 +30,14 @@ public class Encomenda {
         this.idDestino = idDestino;
         this.idLocalizacaoAtual = idLocalizacaoAtual;
         this.dataCriacao = dataCriacao;
+    }
+
+    public int getIdEncomenda() {
+        return idEncomenda;
+    }
+
+    public long getCodigoRastreamento() {
+        return codigoRastreamento;
     }
 
     public String getNome() {
