@@ -1,5 +1,6 @@
+
 CREATE TABLE usuario (
-    id_usuario INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     cpf VARCHAR(11) NOT NULL UNIQUE,
     senha VARCHAR(16) NOT NULL,
@@ -9,38 +10,38 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE localizacao (
-    id_localizacao INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     cidade VARCHAR(100) NOT NULL,
     estado VARCHAR(100) NOT NULL,
     codigo VARCHAR(20)
 );
 
 CREATE TABLE encomenda (
-    id_encomenda INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     codigo_rastreamento BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT,
-    codigo_rastreamento INTEGER NOT NULL,
+    id_fornecedor INTEGER NOT NULL,
     id_origem INTEGER NOT NULL,
     id_destino INTEGER NOT NULL,
     id_localizacao_atual INTEGER NOT NULL,
     data_criacao VARCHAR(20) NOT NULL,
 
     FOREIGN KEY (id_fornecedor)
-        REFERENCES usuario(id_usuario),
+        REFERENCES usuario(id),
 
     FOREIGN KEY (id_origem)
-        REFERENCES localizacao(id_localizacao),
+        REFERENCES localizacao(id),
 
     FOREIGN KEY (id_destino)
-        REFERENCES localizacao(id_localizacao),
+        REFERENCES localizacao(id),
 
     FOREIGN KEY (id_localizacao_atual)
-        REFERENCES localizacao(id_localizacao)
+        REFERENCES localizacao(id)
 );
 
 CREATE TABLE tipo_status (
-    id_tipo_status INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome VARCHAR(50) NOT NULL UNIQUE,
     descricao TEXT
 );
@@ -52,21 +53,21 @@ INSERT INTO tipo_status (nome, descricao) VALUES
 ('ENTREGUE', 'Encomenda entregue ao destinatário');
 
 CREATE TABLE status_encomenda (
-    id_status INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     id_encomenda INTEGER NOT NULL UNIQUE,
     id_tipo_status INTEGER NOT NULL,
     descricao TEXT,
-    data VARCHAR(20) NOT NULL,
+    data_dia VARCHAR(20) NOT NULL,
 
     FOREIGN KEY (id_encomenda)
-        REFERENCES encomenda(id_encomenda),
+        REFERENCES encomenda(id),
 
     FOREIGN KEY (id_tipo_status)
-        REFERENCES tipo_status(id_tipo_status)
+        REFERENCES tipo_status(id)
 );
 
 CREATE TABLE historico (
-    id_historico INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     id_encomenda INTEGER NOT NULL,
     id_tipo_status INTEGER NOT NULL,
     id_localizacao INTEGER NOT NULL,
@@ -74,24 +75,45 @@ CREATE TABLE historico (
     data VARCHAR(20) NOT NULL,
 
     FOREIGN KEY (id_encomenda)
-        REFERENCES encomenda(id_encomenda),
+        REFERENCES encomenda(id),
 
     FOREIGN KEY (id_tipo_status)
-        REFERENCES tipo_status(id_tipo_status),
+        REFERENCES tipo_status(id),
 
     FOREIGN KEY (id_localizacao)
-        REFERENCES localizacao(id_localizacao)
+        REFERENCES localizacao(id)
 );
-CREATE TABLE produto (
+
+CREATE TABLE produtos (
     codigo INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    cod_fornecedor INTEGER NOT NULL,
+    id_fornecedor INTEGER NOT NULL,
     preco NUMERIC(10,2) NOT NULL,
     qtd_estoque INTEGER NOT NULL,
 
-    FOREIGN KEY (cod_fornecedor)
-    REFERENCES fornecedor(codigo),
+    FOREIGN KEY (id_fornecedor)
+    REFERENCES usuario(id),
 
     CHECK (preco >= 0),
     CHECK (qtd_estoque >= 0)
+);
+
+CREATE TABLE armazenar (
+      id SERIAL PRIMARY KEY,
+      id_usuario INTEGER REFERENCES usuario (id),
+      id_localizacao INTEGER REFERENCES localizacao (id),
+      id_encomenda INTEGER REFERENCES encomenda (id),
+      id_tipoStatus INTEGER REFERENCES tipo_status (id),
+      id_statusEncomenda INTEGER REFERENCES status_encomenda (id),
+      id_historico INTEGER REFERENCES historico (id)
+);
+
+INSERT INTO armazenar (id, id_usuario, id_localizacao, id_encomenda, id_tipoStatus, id_statusEncomenda, id_historico) VALUES (
+	DEFAULT,
+   	DEFAULT,
+	DEFAULT,
+	DEFAULT,
+	DEFAULT,
+	DEFAULT,
+	DEFAULT
 );
