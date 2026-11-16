@@ -40,17 +40,7 @@ CREATE TABLE encomenda (
         REFERENCES localizacao(id)
 );
 
-CREATE TABLE tipo_status (
-    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    nome VARCHAR(50) NOT NULL UNIQUE,
-    descricao TEXT
-);
 
-INSERT INTO tipo_status (nome, descricao) VALUES
-('RECEBIDA', 'Encomenda recebida'),
-('EM_TRANSITO', 'Encomenda sendo transportada'),
-('EM_DISTRIBUICAO', 'Encomenda em processo de distribuição'),
-('ENTREGUE', 'Encomenda entregue ao destinatário');
 
 CREATE TABLE status_encomenda (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -65,6 +55,17 @@ CREATE TABLE status_encomenda (
     FOREIGN KEY (id_tipo_status)
         REFERENCES tipo_status(id)
 );
+CREATE TABLE tipo_status (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL UNIQUE,
+    descricao TEXT
+);
+
+INSERT INTO tipo_status (nome, descricao) VALUES
+('RECEBIDA', 'Encomenda recebida'),
+('EM_TRANSITO', 'Encomenda sendo transportada'),
+('EM_DISTRIBUICAO', 'Encomenda em processo de distribuição'),
+('ENTREGUE', 'Encomenda entregue ao destinatário');
 
 CREATE TABLE historico (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
