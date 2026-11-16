@@ -14,7 +14,7 @@ public class rastreamentoEncomenda {
     // READ: pra busca uma encomenda pelo código de rastreamento
     public Encomenda buscar(long codigo) throws SQLException {
 
-        String sql = "SELECT * FROM encomenda WHERE codigo_rastreamento = ?";
+        String sql = "SELECT * FROM encomenda JOIN localizacao ON localizacao.id_localizacao = id_localizacao WHERE codigo_rastreamento = ?";
 
         try (Connection con = Conexao.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
