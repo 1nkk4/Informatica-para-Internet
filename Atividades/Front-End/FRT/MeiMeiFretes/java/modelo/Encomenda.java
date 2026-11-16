@@ -5,7 +5,7 @@ public class Encomenda {
 
     public String nome;
     public String descricao;
-    public int idFornecedor;
+    public int codigo_rastreamento;
     public int idOrigem;
     public int idDestino;
     public int idLocalizacaoAtual;
@@ -35,8 +35,8 @@ public class Encomenda {
         return descricao;
     }
 
-    public int getIdFornecedor() {
-        return idFornecedor;
+    public int getCodigoRastreamento() {
+        return codigo_rastreamento;
     }
 
     public int getIdOrigem() {
