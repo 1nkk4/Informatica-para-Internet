@@ -61,11 +61,6 @@ CREATE TABLE tipo_status (
     descricao TEXT
 );
 
-INSERT INTO tipo_status (nome, descricao) VALUES
-('RECEBIDA', 'Encomenda recebida'),
-('EM_TRANSITO', 'Encomenda sendo transportada'),
-('EM_DISTRIBUICAO', 'Encomenda em processo de distribuição'),
-('ENTREGUE', 'Encomenda entregue ao destinatário');
 
 CREATE TABLE historico (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
