@@ -47,7 +47,7 @@ CREATE TABLE status_encomenda (
     id_encomenda INTEGER NOT NULL UNIQUE,
     id_tipo_status INTEGER NOT NULL,
     descricao TEXT,
-    data_dia VARCHAR(20) NOT NULL,
+    data date NOT NULL,
 
     FOREIGN KEY (id_encomenda)
         REFERENCES encomenda(id),
@@ -73,7 +73,7 @@ CREATE TABLE historico (
     id_tipo_status INTEGER NOT NULL,
     id_localizacao INTEGER NOT NULL,
     descricao TEXT,
-    data VARCHAR(20) NOT NULL,
+    data DATE NOT NULL,
 
     FOREIGN KEY (id_encomenda)
         REFERENCES encomenda(id),
