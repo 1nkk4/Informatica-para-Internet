@@ -90,7 +90,7 @@ CREATE TABLE produto (
     qtd_estoque INTEGER NOT NULL,
 
     FOREIGN KEY (cod_fornecedor)
-    REFERENCES fornecedores(codigo),
+    REFERENCES fornecedor(codigo),
 
     CHECK (preco >= 0),
     CHECK (qtd_estoque >= 0)
