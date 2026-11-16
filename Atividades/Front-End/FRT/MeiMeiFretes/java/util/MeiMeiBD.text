@@ -20,7 +20,7 @@ CREATE TABLE encomenda (
     codigo_rastreamento BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT,
-    id_fornecedor INTEGER NOT NULL,
+    codigo_rastreamento INTEGER NOT NULL,
     id_origem INTEGER NOT NULL,
     id_destino INTEGER NOT NULL,
     id_localizacao_atual INTEGER NOT NULL,
