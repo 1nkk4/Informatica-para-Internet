@@ -28,10 +28,8 @@ public class rastreamentoEncomenda {
                     Encomenda entrega = new Encomenda(
                         rs.getString("nome"),
                         rs.getString("descricao"),
-                        rs.getInt("id_fornecedor"),
-                        rs.getInt("id_origem"),
-                        rs.getInt("id_destino"),
-                        rs.getInt("id_localizacao_atual"),
+                        rs.getString("cidade"),
+                        rs.getInt("estado"),
                         rs.getString("data_criacao")
                     );
 
