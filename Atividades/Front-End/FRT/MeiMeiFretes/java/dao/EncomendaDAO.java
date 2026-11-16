@@ -11,7 +11,7 @@ public class EncomendaDAO {
     public void cadastrarEncomenda(Encomenda encomenda) {
 
         String sql = "INSERT INTO encomenda "
-                + "(nome, descricao, id_fornecedor, "
+                + "(nome, descricao, codigo_rastreamento, "
                 + "id_origem, id_destino, "
                 + "id_localizacao_atual, data_criacao) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -25,7 +25,7 @@ public class EncomendaDAO {
             
             stmt.setString(1, encomenda.getNome());
             stmt.setString(2, encomenda.getDescricao());
-            stmt.setInt(3, encomenda.getIdFornecedor());
+            stmt.setInt(3, encomenda.getCodigoRastreamento());
             stmt.setInt(4, encomenda.getIdOrigem());
             stmt.setInt(5, encomenda.getIdDestino());
             stmt.setInt(6, encomenda.getIdLocalizacaoAtual());
