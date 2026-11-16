@@ -1,0 +1,19 @@
+//localização
+INSERT INTO localizacao(cidade, estado, id_localizacao, codigo) 
+VALUES ('porto  alegre', 'RS', '1', '1');
+
+//status encomenda
+INSERT INTO status_encomenda(id_encomenda, id_tipo_status)
+VALUES ('1','1');
+
+
+//tipo status
+INSERT INTO tipo_status (nome, descricao) VALUES
+('RECEBIDA', 'Encomenda recebida'),
+('EM_TRANSITO', 'Encomenda sendo transportada'),
+('EM_DISTRIBUICAO', 'Encomenda em processo de distribuição'),
+('ENTREGUE', 'Encomenda entregue ao destinatário');
+
+//historico
+INSERT INTO historico(descricao, data)
+VALUES ('','20260101');
