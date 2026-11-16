@@ -2,7 +2,7 @@ CREATE TABLE usuario (
     id_usuario INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     cpf VARCHAR(11) NOT NULL UNIQUE,
-    senha VARCHAR(16) NOT NULL;
+    senha VARCHAR(16) NOT NULL,
     tipo VARCHAR(20) NOT NULL,
 
     CHECK (tipo IN ('CLIENTE', 'FORNECEDOR'))
@@ -81,4 +81,17 @@ CREATE TABLE historico (
 
     FOREIGN KEY (id_localizacao)
         REFERENCES localizacao(id_localizacao)
+);
+CREATE TABLE produtos (
+    codigo INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cod_fornecedor INTEGER NOT NULL,
+    preco NUMERIC(10,2) NOT NULL,
+    qtd_estoque INTEGER NOT NULL,
+
+    FOREIGN KEY (cod_fornecedor)
+    REFERENCES fornecedores(codigo),
+
+    CHECK (preco >= 0),
+    CHECK (qtd_estoque >= 0)
 );
