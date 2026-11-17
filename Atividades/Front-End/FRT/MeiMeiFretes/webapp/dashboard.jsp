@@ -131,7 +131,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard - MeiMei Fretes</title>
+    <title>Admin</title>
 
     <link href="style.css" rel="stylesheet" type="text/css">
 
@@ -161,8 +161,8 @@
         <div class="menu">
             <a href="index.jsp">Início</a><br>
             <a href="rastreamento.jsp">Rastreamento</a><br>
-            <a href="login.jsp">Login/Registro</a><br>
-            <a href="sobrenos.jsp">Sobre Nós</a>
+            <a href="sobrenos.jsp">Sobre Nós</a><br>
+            <% if (nome != null) {%><a href="logout.jsp">logout</a><%}%>
         </div>
 
         <div class="content">

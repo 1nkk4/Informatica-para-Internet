@@ -7,11 +7,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Page</title>
+    <title>Rastreio</title>
     <link href="style.css" rel="stylesheet" type="text/css" media="all">
   </head>
 
   <%
+	request.setCharacterEncoding("UTF-8");
   	StatusEncomenda statusAtual = null;
     String nome = (String) session.getAttribute("nome");
     String cpf = (String) session.getAttribute("cpf");
@@ -49,7 +50,12 @@
     <div class="container">
       <div class="header"><a href="index.jsp"><img class="image" src="src/meimei.png" align="left"></a></div>
 
-      <div class="menu"><a href="index.jsp">Ínicio</a><br><a href="rastreamento.jsp">Rastreamento</a><br><a href="sobrenos.jsp">Sobre Nós</a><br><a href="logout.jsp">Logout</a></div>
+        <div class="menu">
+            <a href="index.jsp">Início</a><br>
+            <a href="rastreamento.jsp">Rastreamento</a><br>
+            <a href="sobrenos.jsp">Sobre Nós</a><br>
+            <% if (nome != null) {%><a href="logout.jsp">logout</a><%}%>
+        </div>
 
       <div class="content">
         <p>Olá, <%=nome%> (<%=cpf%>)</p>
