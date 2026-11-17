@@ -1,3 +1,4 @@
+<%@page contentType=â€œtext/htmlâ€ pageEncoding=â€œUTF-8â€ %>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -34,10 +35,10 @@
       <div class="header"><a href=  "index.jsp"><img class="image"  src="src/meimei.png" align="left"></a></div>
       
         <div class="menu">
-            <a href="index.jsp">Início</a><br>
+            <a href="index.jsp">InÃ­cio</a><br>
             <a href="rastreamento.jsp">Rastreamento</a><br>
             <% if (nome == null) {%><a href="login.jsp">Login</a><br><a href="registro.jsp">Registrar</a><br><%}%>
-            <a href="sobrenos.jsp">Sobre Nós</a><br>
+            <a href="sobrenos.jsp">Sobre NÃ³s</a><br>
         </div>
               
       <div class="content">
@@ -47,16 +48,16 @@
       		<h3>Bem vindo ao MeiMeiFretes!</h3>
       		<p>
       		Sua loja pode ser um Ponto de Coleta dos MeiMeiFretes Seja parceiro MeiMei! 
-      		Transforme seu estabelecimento em um Ponto de Coleta: amplie as oportunidades do seu negócio oferecendo serviços de recebimento e entrega de encomendas do MeiMeiFretes.
+      		Transforme seu estabelecimento em um Ponto de Coleta: amplie as oportunidades do seu negÃ³cio oferecendo serviÃ§os de recebimento e entrega de encomendas do MeiMeiFretes.
       		</p>
       		
       		<br>
-			<h4>MeiMax, a encomenda líder do meu bairro!</h4>
+			<h4>MeiMax, a encomenda lÃ­der do meu bairro!</h4>
 			
-			<p>Procurando confiança, qualidade e agilidade no seu envio? Vá de MeiMax! O líder de entregas expressas no país. Os MeiMeis possuem um MeiMax, para cada necessidade. Pensou encomenda, pensou MeiMax!</p>
+			<p>Procurando confianÃ§a, qualidade e agilidade no seu envio? VÃ¡ de MeiMax! O lÃ­der de entregas expressas no paÃ­s. Os MeiMeis possuem um MeiMax, para cada necessidade. Pensou encomenda, pensou MeiMax!</p>
       		</div>
       		<div >
-      		<img src="src/slideshow.gif" alt="Gif de slides engraçados do gatinho meimei" width="300" border="1px">
+      		<img src="src/slideshow.gif" alt="Gif de slides engraÃ§ados do gatinho meimei" width="300" border="1px">
       		</div>
       	</div>
       </div>
