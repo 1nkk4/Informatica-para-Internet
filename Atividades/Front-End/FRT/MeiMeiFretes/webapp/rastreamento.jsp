@@ -1,6 +1,8 @@
+<%@page contentType=‚Äútext/html‚Äù pageEncoding=‚ÄúUTF-8‚Äù %>
 <%@ page import="dao.*" %>
 <%@ page import="modelo.*" %>
 <%@ page import="java.util.*" %>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -51,28 +53,28 @@
       <div class="header"><a href="index.jsp"><img class="image" src="src/meimei.png" align="left"></a></div>
 
         <div class="menu">
-            <a href="index.jsp">InÌcio</a><br>
+            <a href="index.jsp">In√≠cio</a><br>
             <a href="rastreamento.jsp">Rastreamento</a><br>
-            <a href="sobrenos.jsp">Sobre NÛs</a><br>
+            <a href="sobrenos.jsp">Sobre N√≥s</a><br>
             <% if (nome != null) {%><a href="logout.jsp">logout</a><%}%>
         </div>
 
       <div class="content">
-        <p>Ol·, <%=nome%> (<%=cpf%>)</p>
+        <p>Ol√°, <%=nome%> (<%=cpf%>)</p>
 
         <form method="get" action="rastreamento.jsp">
-            <label for="codigo">CÛdigo de rastreio:</label><br>
+            <label for="codigo">C√≥digo de rastreio:</label><br>
             <input type="text" id="codigo" name="codigo" value="<%= codigoRastreamento != null ? codigoRastreamento : "" %>"><br><br>
             <input type="submit" value="Consultar">
         </form>
 
         <% if (codigoRastreamento != null && !codigoRastreamento.trim().isEmpty()) { %>
             <% if (encomenda == null) { %>
-                <p>Encomenda n„o encontrada.</p>
+                <p>Encomenda n√£o encontrada.</p>
             <% } else { %>
                 <h3>Encomenda: <%= encomenda.getNome() %></h3>
-                <p><strong>CÛdigo:</strong> <%= encomenda.getCodigoRastreamento() %></p>
-			    <p><strong>DescriÁ„o:</strong> <%= encomenda.getDescricao() %></p>
+                <p><strong>C√≥digo:</strong> <%= encomenda.getCodigoRastreamento() %></p>
+			    <p><strong>Descri√ß√£o:</strong> <%= encomenda.getDescricao() %></p>
 			
 			<% if (statusAtual != null) { %>
 			    <p>
@@ -82,23 +84,23 @@
 			<% } else { %>
 			    <p>
 			        <strong>Status atual:</strong>
-			        Ainda n„o cadastrado.
+			        Ainda n√£o cadastrado.
 			    </p>
 			<% } %>
 			
-			<h3>HistÛrico</h3>
+			<h3>Hist√≥rico</h3>
 
                 <table border="1" style="width: 100%; margin-top: 20px;">
                     <tr>
                         <th>Data</th>
                         <th>Status</th>
-                        <th>LocalizaÁ„o</th>
-                        <th>DescriÁ„o</th>
+                        <th>Localiza√ß√£o</th>
+                        <th>Descri√ß√£o</th>
                     </tr>
 
                     <% if (historicos == null || historicos.isEmpty()) { %>
                         <tr>
-                            <td colspan="4">Nenhum histÛrico encontrado.</td>
+                            <td colspan="4">Nenhum hist√≥rico encontrado.</td>
                         </tr>
                     <% } else { %>
                         <% for (Historico h : historicos) { %>
